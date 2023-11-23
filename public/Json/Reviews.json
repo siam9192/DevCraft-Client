@@ -1,0 +1,40 @@
+[
+     
+      {
+        "client_name": "John Doe",
+        "photo":   "/images/users/1.jpg",
+        "profession": "Businessman",
+        "review": "Absolutely thrilled with the software! It has streamlined our processes and improved efficiency across the board.",
+        "rating": 5
+      },
+      {
+        "client_name": "Jane Smith",
+        "photo":  "/images/users/3.jpg",
+        "profession": "Freelancer",
+        "review": "Impressive features and user-friendly interface. The customer support team is responsive and helpful.",
+        "rating": 4.5
+      },
+      {
+        "client_name": "Mike Johnson",
+        "photo": "/images/users/7.jpg",
+        "profession": "Shopkeper",
+        "review": "The software's scalability is remarkable. It effortlessly grows with our business needs. A game-changer for us.",
+        "rating": 5
+      },
+      {
+        "client_name": "Emily Chen",
+        "photo": "/images/users/6.jpg",
+        "review": "The innovative tools provided by this software give us a competitive edge. Regular updates keep it ahead of the curve.",
+        "profession": "Fashion designer",
+        "rating": 4.8
+      },
+      {
+        "client_name": "Robert Davis",
+        "photo":"/images/users/4.jpg",
+        "profession": "Businessman",
+        "review": "The customer support is excellent. Quick responses and solutions to any issues we encounter. Very satisfied.",
+        "rating": 4.7
+      }
+    ]
+  
+  

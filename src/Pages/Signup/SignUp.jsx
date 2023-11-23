@@ -1,0 +1,140 @@
+import React, { useState } from 'react';
+import Container from '../../Components/Reuse/Container/Container';
+import { Form, Link, useLocation } from 'react-router-dom';
+import { FaImage, FaRegImage } from "react-icons/fa6";
+import axios from 'axios';
+import AxiosBase from '../../Hooks/Axios/AxiosBase';
+import UseAuth from '../../Hooks/UserAuth/UseAuth';
+const SignUp = () => {
+   const [error,setError] = useState('');
+   const [loading,setLoading] = useState(false);
+   const [image,setImage] = useState('');
+  const {createUser} = UseAuth();
+
+// set user image 
+const handleImage =(e)=>{
+const file = e.target.files[0];
+if(file){
+    const imgUrl = URL.createObjectURL(file);
+    setImage(imgUrl);
+}
+}
+
+const createAccount = async(e)=>{
+    e.preventDefault();
+    const form = e.target;
+    const name = form.name.value;
+    const imgFile =  form.photo.files[0];
+    const email = form.email.value;
+    const role = form.role.value;
+    const bankAccount = form.bank_ac.value;
+    const password = form.password.value;
+     
+    console.log(name,email,role,bankAccount,password)
+    if(password.length < 6){
+        setLoading(false)
+        setError('Password must be at least 6 characters');
+        
+        return;
+    }
+   
+    else if(!/[A-Z]/.test(password)){
+        setLoading(false)
+    setError('Password must have minimum one Capital letter');
+    return;
+    }
+    else if(!/[!@#$%^&*()_+{}\[\]:;<>,.?~\\]/.test(password)){
+        setLoading(false)
+        setError('Password must have minimum one special characters');
+        return;
+    }
+
+    const apiKey = "c9c302a9d5cee64c8eb4dde4d9803027";
+ createUser(email,password)
+ .then(async current =>{
+    const response = await axios.post(`https://api.imgbb.com/1/upload?key=${apiKey}`,{image:imgFile},{
+    headers:{
+        'content-type':'multipart/form-data'
+    }
+ 
+})
+ })
+}
+const res = await axios.post(`https://api.imgbb.com/1/upload?key=${apiKey}`,{image:imgFile},{
+    headers:{
+        'content-type':'multipart/form-data'
+    }
+    
+ })
+ if(res.data.status !== 'success'){
+    return;
+ }
+//  const imageUrl = res.data.data.display_url;
+//  const user = {
+// name,image:imageUrl,role,email,bankAccount
+//  }
+// const postUser = await AxiosBase().post('/api/v1/user/new');
+// const result = postUser.data;
+// if(postUser.insertedId){
+//     alert('Sucessfull')
+//     form.reset()
+// }
+
+    return (
+        <div className='bg-gray-200 min-h-[100vh]'>
+            <Container>
+                <div className='md:flex flex-col justify-center items-center py-2 space-y-4 font-inter'>
+                <div className='flex flex-col justify-center items-center'>
+        <h1 className='text-blue-600 text-4xl font-oswlad font-semibold'>Innovexa Software</h1>
+         <p className='text-gray-800 textxl -mt-2 font-inter font-bold'>Employee Management</p>
+        </div>
+              <Form className='bg-white shadow-2xl p-5 md:w-1/2 space-y-5 rounded-lg text-black' onSubmit={createAccount}>
+                <div className='text-center'>
+                   {/* <FaImage className='text-8xl text-gray-300'></FaImage> */}
+                <div className='flex justify-center flex-col items-center'>
+                <img src={`${image ? image :'/images/photo.png'}`} alt="" className='w-72 h-72 rounded-full'/>
+           
+                </div>
+                   <h2 >Upload your image</h2>
+                   <input type="file" name= 'photo'  className='w-full py-2 border-b-2 border-gray-500' onChange={handleImage}/>
+                </div>
+            <div>
+            <p className='text-black font-semibold py-1'>Your name</p>
+                <input type="text" name='name' className='w-full py-2 px-2  border-b-2 outline-none border-gray-500'/>
+            </div>
+           <div>
+           <p className='text-black font-semibold py-1'>Your email</p>
+                <input type="text" name='email' className='w-full py-2 px-2  border-b-2 outline-none border-gray-500'/>
+           </div>
+             <div>
+                <p className='text-black font-semibold py-1'>Chose your role</p>
+             <select name='role' className='w-full py-2 px-2  border-b-2 outline-none border-gray-500'>
+                <option value="employee">Employee</option>
+                <option value='hr'>Hr</option>
+                <option value='admin'>Admin</option>
+               </select>
+             </div>
+          <div>
+          <p className='text-black font-semibold py-1'>Your available bank account no: </p>
+                <input type="text" name='bank_ac' placeholder='Your bank ac number' className='w-full py-2 px-2  border-b-2 outline-none border-gray-500'/>
+          </div>
+       <div>
+       <p className='text-black font-semibold py-1'>Password</p>
+                <input name='password' type="text" placeholder='Password' className='w-full py-2 px-2  border-b-2 outline-none border-gray-500'/>
+       </div>
+                <div className='flex items-center gap-2'>
+               
+    <input type="checkbox"  class="checkbox checkbox-success" />
+    <h3 className='flex items-center gap-2'>I agree  <span className='text-green-600'>terms and conditions</span></h3>
+                </div>
+                <button type='submit' className='py-2 text-center text-white bg-green-600 w-full'>Create account</button>
+                {error && <p className='text-red-600'>{error}</p>}
+                <p className='text-black'>Already have an account ? <Link className='text-green-600 font-semibold'>Login</Link></p>
+              </Form>
+                </div>
+            </Container>
+        </div>
+    );
+}
+
+export default SignUp;

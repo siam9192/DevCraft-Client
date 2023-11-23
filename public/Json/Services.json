@@ -1,0 +1,36 @@
+[
+    {
+      "service": "Custom Software Development",
+      "description": "Tailored software solutions to meet the specific needs and requirements of clients. Development of custom applications, web platforms, and software systems. Integration with existing systems or third-party services. Scalable solutions to accommodate future growth and changes.",
+      "images": "/images/development.png"
+    },
+    {
+      "service": "Software Consultation and Planning",
+      "description": "Strategic guidance and planning services to help clients make informed decisions about their software projects. Requirement analysis and feasibility studies. Technology selection and architecture planning. Roadmap development and project management.",
+      "images": "/images/calculation.png"
+    },
+    {
+      "service": "User Experience (UX) and User Interface (UI) Design",
+      "description": "Design services focused on creating user-friendly and visually appealing software interfaces. User research and persona development. Wireframing and prototyping for interface design. UI development with a focus on usability and positive user experiences.",
+      "images": "/images/ui.png"
+    }
+    ,
+        {
+          "service": "Mobile App Development",
+          "description": "Development of custom mobile applications for iOS and Android platforms. Native or cross-platform solutions to reach a broad audience. User-friendly interfaces and seamless integration with mobile devices.",
+          "images": "/images/app.png"
+        },
+        {
+          "service": "Quality Assurance and Testing",
+          "description": "Comprehensive testing services to ensure the reliability, performance, and security of software products. Automated and manual testing procedures. Identification and resolution of bugs and issues.",
+          "images": "/images/testing.png"
+        },
+        {
+          "service": "Cloud Computing Solutions",
+          "description": "Utilization of cloud technologies for scalable and flexible solutions. Cloud architecture design, migration, and optimization. Integration with popular cloud platforms such as AWS, Azure, or Google Cloud.",
+          "images": "/images/cloud.png"
+        }
+      
+      
+  ]
+  

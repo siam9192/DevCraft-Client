@@ -1,0 +1,23 @@
+.banner{
+    background-image: url('/banner/banner1.jpg'),linear-gradient(rgba(0, 0, 0, 0.8), rgba(0, 0, 0, 0.6));
+    background-position: center;
+    background-size: cover;
+    background-blend-mode: overlay;
+
+}
+.swiper-pagination-bullet {
+    width: 10px;
+    height: 10px;
+    background-color: #007bff;
+    opacity: 0.7;
+  }
+  
+  .swiper-pagination-bullet-active {
+    opacity: 1;
+  }
+  .swiper-pagination {
+    position: absolute;
+
+    justify-content: center;
+    align-items: center;
+  }
