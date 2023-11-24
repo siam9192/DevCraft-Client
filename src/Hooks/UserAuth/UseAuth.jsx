@@ -2,9 +2,9 @@ import React, { useContext } from 'react';
 import { fireBaseContext } from '../../Provider/AuthProvider';
 
 const UseAuth = () => {
-   const {user,createUser,logout,loading} = useContext(fireBaseContext);
+   const {user,createUser,login,logout,loading} = useContext(fireBaseContext);
 
-   return {user,createUser,logout,loading};
+   return {user,createUser,login,logout,loading};
 }
 
 export default UseAuth;

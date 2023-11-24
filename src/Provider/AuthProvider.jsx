@@ -1,6 +1,7 @@
 import { createUserWithEmailAndPassword, onAuthStateChanged, signInWithEmailAndPassword, signOut } from 'firebase/auth';
 import React, { createContext, useEffect, useState } from 'react';
 import auth from '../Firebase/Firebase.config';
+import AxiosBase from '../Hooks/Axios/AxiosBase';
 
 export const fireBaseContext = createContext(null)
 const AuthProvider = ({children}) => {
@@ -21,12 +22,16 @@ const AuthProvider = ({children}) => {
     useEffect(()=>{
 const observer = onAuthStateChanged(auth,currentUser =>{
     if(currentUser){
-       
        setUser(currentUser)
+       AxiosBase().post('/api/v1/jwt')
+       .then(res => {
+        localStorage.setItem('access-token',res.data.token)
+       })
      
     }
     else{
         setUser(null);
+        localStorage.removeItem('access-token')
       setLoading(false)
     }
         return ()=> observer();

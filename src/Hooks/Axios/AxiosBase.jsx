@@ -4,6 +4,7 @@ const AxiosBase = () => {
  const instance = axios.create({
     baseURL:"http://localhost:8000"
  })
+ return instance;
 }
 
 export default AxiosBase;

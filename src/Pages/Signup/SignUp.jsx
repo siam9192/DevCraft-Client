@@ -5,32 +5,38 @@ import { FaImage, FaRegImage } from "react-icons/fa6";
 import axios from 'axios';
 import AxiosBase from '../../Hooks/Axios/AxiosBase';
 import UseAuth from '../../Hooks/UserAuth/UseAuth';
+import { updateProfile } from 'firebase/auth';
+import auth from '../../Firebase/Firebase.config';
 const SignUp = () => {
    const [error,setError] = useState('');
    const [loading,setLoading] = useState(false);
    const [image,setImage] = useState('');
   const {createUser} = UseAuth();
-
-// set user image 
-const handleImage =(e)=>{
-const file = e.target.files[0];
-if(file){
+  const useAxiosBase = AxiosBase();
+ 
+ // set user image 
+ const handleImage =(e)=>{
+ const file = e.target.files[0];
+ if(file){
     const imgUrl = URL.createObjectURL(file);
     setImage(imgUrl);
-}
+ }
 }
 
 const createAccount = async(e)=>{
     e.preventDefault();
+    setLoading(true)
+    setError('')
     const form = e.target;
     const name = form.name.value;
     const imgFile =  form.photo.files[0];
     const email = form.email.value;
     const role = form.role.value;
+    const salary = parseInt(form.salary.value);
     const bankAccount = form.bank_ac.value;
     const password = form.password.value;
-     
-    console.log(name,email,role,bankAccount,password)
+    const terms = form.terms.checked;
+    
     if(password.length < 6){
         setLoading(false)
         setError('Password must be at least 6 characters');
@@ -48,38 +54,45 @@ const createAccount = async(e)=>{
         setError('Password must have minimum one special characters');
         return;
     }
+    else if(!terms){
+        setLoading(false)
+  setError('Please accept our terms & condition')
+    }
 
     const apiKey = "c9c302a9d5cee64c8eb4dde4d9803027";
  createUser(email,password)
  .then(async current =>{
+    console.log('hitting')
     const response = await axios.post(`https://api.imgbb.com/1/upload?key=${apiKey}`,{image:imgFile},{
     headers:{
         'content-type':'multipart/form-data'
     }
- 
-})
- })
-}
-const res = await axios.post(`https://api.imgbb.com/1/upload?key=${apiKey}`,{image:imgFile},{
-    headers:{
-        'content-type':'multipart/form-data'
-    }
     
- })
- if(res.data.status !== 'success'){
+})
+console.log('giitinf',response.data)
+if(!response.data.success){
+    setLoading(false)
     return;
  }
-//  const imageUrl = res.data.data.display_url;
-//  const user = {
-// name,image:imageUrl,role,email,bankAccount
-//  }
-// const postUser = await AxiosBase().post('/api/v1/user/new');
-// const result = postUser.data;
-// if(postUser.insertedId){
-//     alert('Sucessfull')
-//     form.reset()
-// }
+ const imageUrl = response.data.data.display_url;
+  updateProfile(auth.currentUser,{
+    displayName: name,photoURL:imageUrl
+})
+ const user = {
+name,image:imageUrl,role,email,salary,bankAccount,isVerified: false
+ }
+//  console.log('user',user)
+ const postUser = await useAxiosBase.post('/api/v1/user/new',user);
+const result = postUser.data;
+if(result.insertedId){
+    // alert('Successful')
+    setLoading(false)
+    form.reset()
+}
+ })
+ 
 
+}
     return (
         <div className='bg-gray-200 min-h-[100vh]'>
             <Container>
@@ -92,7 +105,7 @@ const res = await axios.post(`https://api.imgbb.com/1/upload?key=${apiKey}`,{ima
                 <div className='text-center'>
                    {/* <FaImage className='text-8xl text-gray-300'></FaImage> */}
                 <div className='flex justify-center flex-col items-center'>
-                <img src={`${image ? image :'/images/photo.png'}`} alt="" className='w-72 h-72 rounded-full'/>
+                <img src={`${image ? image :'/images/photo.png'}`} alt="" className='w-52 h-52 rounded-full'/>
            
                 </div>
                    <h2 >Upload your image</h2>
@@ -114,9 +127,14 @@ const res = await axios.post(`https://api.imgbb.com/1/upload?key=${apiKey}`,{ima
                 <option value='admin'>Admin</option>
                </select>
              </div>
-          <div>
-          <p className='text-black font-semibold py-1'>Your available bank account no: </p>
-                <input type="text" name='bank_ac' placeholder='Your bank ac number' className='w-full py-2 px-2  border-b-2 outline-none border-gray-500'/>
+          <div className='flex items-center gap-2'>
+            <div className='flex-1'>
+            <p className='text-black font-semibold py-1'>Your salary:  (per month)</p>
+                <input type="number" name='salary' placeholder='' className='w-full py-2 px-2  border-b-2 outline-none border-gray-500'/>
+            </div>
+      <div className='flex-1'><p className='text-black font-semibold py-1'>Your available bank account no: </p>
+                <input type="text" name='bank_ac' placeholder='Your bank ac number' className='w-full py-2 px-2  border-b-2 outline-none border-gray-500'/></div>
+
           </div>
        <div>
        <p className='text-black font-semibold py-1'>Password</p>
@@ -124,12 +142,12 @@ const res = await axios.post(`https://api.imgbb.com/1/upload?key=${apiKey}`,{ima
        </div>
                 <div className='flex items-center gap-2'>
                
-    <input type="checkbox"  class="checkbox checkbox-success" />
+    <input type="checkbox" name='terms' class="checkbox checkbox-success" />
     <h3 className='flex items-center gap-2'>I agree  <span className='text-green-600'>terms and conditions</span></h3>
                 </div>
-                <button type='submit' className='py-2 text-center text-white bg-green-600 w-full'>Create account</button>
+                <button type='submit' disabled = {loading} className='py-2 text-center text-white bg-green-600 w-full'>{loading ? <span className="loading loading-spinner loading-sm"></span> : "Create account"}</button>
                 {error && <p className='text-red-600'>{error}</p>}
-                <p className='text-black'>Already have an account ? <Link className='text-green-600 font-semibold'>Login</Link></p>
+                <p className='text-black'>Already have an account ? <Link to='/login' className='text-green-600 font-semibold'>Login</Link></p>
               </Form>
                 </div>
             </Container>
