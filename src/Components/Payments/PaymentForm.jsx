@@ -2,7 +2,7 @@ import { CardElement, useElements, useStripe } from '@stripe/react-stripe-js';
 import React, { useEffect, useState } from 'react';
 import AxiosSecure from '../../Hooks/Axios/AxiosSecure';
 import useAuth from '../../Hooks/UserAuth/UseAuth';
-import { Toaster } from 'react-hot-toast';
+import toast, { Toaster } from 'react-hot-toast';
 const PaymentForm = ({paymentDetails}) => {
 const [clientSecret,setClientSecret]  = useState('');
 const [paymentError,setPaymentError] = useState('');
@@ -88,6 +88,7 @@ card
   .then(res => {
  if(res.data.insertedId){
   setProcessing(false)
+  document.getElementById('my_modal_1').close()
   toast.success('Payment successful!');
 
  }
@@ -125,18 +126,18 @@ card
 <div className='space-y-1'>
 <p>Select month:</p>
 <select id="monthSelect" name="month" className='py-2 border-2 border-black w-full rounded px-2'>
-     <option value="01">January</option>
-     <option value="02">February</option>
-     <option value="03">March</option>
-     <option value="04">April</option>
-     <option value="05">May</option>
-     <option value="06">June</option>
-     <option value="07">July</option>
-     <option value="08">August</option>
-     <option value="09">September</option>
-     <option value="10">October</option>
-     <option value="11">November</option>
-     <option value="12">December</option>
+     <option value="january">January</option>
+     <option value="february">February</option>
+     <option value="march">March</option>
+     <option value="april">April</option>
+     <option value="may">May</option>
+     <option value="june">June</option>
+     <option value="july">July</option>
+     <option value="august">August</option>
+     <option value="september">September</option>
+     <option value="october">October</option>
+     <option value="november">November</option>
+     <option value="december">December</option>
  </select>
 </div>
  
@@ -146,7 +147,7 @@ card
 
 </div>
 </div>
-<button type='submit' disabled = {!paymentDetails.isVerified || !stripe || !clientSecret} className= {`w-full ${!paymentDetails.isVerified || !stripe || !clientSecret ? 'bg-green-200' : 'bg-green-600'} text-white py-2 rounded-md`}>Confirm Payment</button>
+<button type='submit' disabled = {!paymentDetails.isVerified || !stripe || !clientSecret} className= {`w-full ${!paymentDetails.isVerified || !stripe || !clientSecret ? 'bg-green-200' : 'bg-green-600'} text-white py-2 rounded-md`}>{isProcessing ? <div className='flex items-center gap-2 justify-center'><p>Processing</p><span className="loading loading-ball loading-md"></span></div> : 'Confirm Payment'}</button>
 {paymentError&& <p className='text-red-600'>{paymentError}</p>}
 </form>
             {/* <h3 className='py-1 text-black'>Card details:</h3> */}

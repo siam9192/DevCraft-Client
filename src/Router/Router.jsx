@@ -7,6 +7,8 @@ import Dashboard from "../Pages/Dashboard/Dashboard";
 import DashboardMain from "../Pages/Dashboard/DashboardMain";
 import Employess from "../Pages/Dashboard/Employess";
 import Progress from "../Pages/Dashboard/Progress";
+import PaymentHistory from "../Pages/Dashboard/PaymentHistory";
+import WorkSheet from "../Pages/Dashboard/WorkSheet";
 const router = createBrowserRouter([
     {
         path:'/',
@@ -42,6 +44,14 @@ const router = createBrowserRouter([
             {
                 path:'/dashboard/progress',
                 element:<Progress></Progress>
+            },
+            {
+                path:'/dashboard/payment-history',
+                element:<PaymentHistory></PaymentHistory>
+            },
+            {
+                path:'/dashboard/work-sheet',
+                element:<WorkSheet></WorkSheet>
             }
         ]
     }
