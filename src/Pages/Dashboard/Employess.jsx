@@ -4,6 +4,7 @@ import { GiCheckMark } from "react-icons/gi";
 import { RxCross2 } from "react-icons/rx";
 import { MdDashboard } from "react-icons/md";
 import { Axios } from 'axios';
+import {Link} from 'react-router-dom'
 import AxiosSecure from '../../Hooks/Axios/AxiosSecure';
 import Payments from '../../Components/Payments/Payments';
 
@@ -87,7 +88,7 @@ const closeModal = ()=>{
         <td>BDT {user.salary} </td>
         <td><button className='w-full bg-green-600 text-white py-2' onClick={()=> openModal(user)}>pay</button></td>
         <td>
-          <button className="btn btn-ghost btn-xs bg-blue-800 text-white">details</button>
+        <Link to = {`/details/${user.email}`}><button className="btn btn-ghost btn-xs bg-blue-800 text-white">details</button></Link>
         </td>
       </tr>
         })

@@ -12,6 +12,7 @@ const useAxiosSecure = AxiosSecure();
 const {user} = useAuth()
 const elements = useElements();
 const stripe = useStripe();
+const [toggle,setToggle] = useState(true)
 
 useEffect(()=>{
  if(paymentDetails.salary){
@@ -20,7 +21,7 @@ useEffect(()=>{
      })
      .then(res => setClientSecret(res.data.client_secret))
  }
-},[paymentDetails])
+},[paymentDetails,toggle])
 
 const handelSubmit =async(e)=>{
   
@@ -88,7 +89,9 @@ card
   .then(res => {
  if(res.data.insertedId){
   setProcessing(false)
+  setToggle(!toggle)
   document.getElementById('my_modal_1').close()
+  form.reset()
   toast.success('Payment successful!');
 
  }

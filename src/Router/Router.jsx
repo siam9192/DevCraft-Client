@@ -9,6 +9,7 @@ import Employess from "../Pages/Dashboard/Employess";
 import Progress from "../Pages/Dashboard/Progress";
 import PaymentHistory from "../Pages/Dashboard/PaymentHistory";
 import WorkSheet from "../Pages/Dashboard/WorkSheet";
+import EmployeeDetails from "../Pages/EmployeeDetails/EmployeeDetails";
 const router = createBrowserRouter([
     {
         path:'/',
@@ -53,7 +54,13 @@ const router = createBrowserRouter([
                 path:'/dashboard/work-sheet',
                 element:<WorkSheet></WorkSheet>
             }
-        ]
+        ],
+
+    }
+    ,
+    {
+        path:'/details/:email',
+        element:<EmployeeDetails></EmployeeDetails>
     }
 ])
 

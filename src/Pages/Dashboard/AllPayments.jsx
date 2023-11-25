@@ -52,7 +52,7 @@ const AllPayments = () => {
         <td>BDT {user.salary} </td>
         <td><button className='w-full bg-green-600 text-white py-2' onClick={()=> openModal(user)}>pay</button></td>
         <td>
-          <button className="btn btn-ghost btn-xs bg-blue-800 text-white">details</button>
+       
         </td>
       </tr>
         })

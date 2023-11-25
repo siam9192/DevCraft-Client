@@ -10,8 +10,7 @@ const QueryUsers = () => {
     queryKey:['users'],
     queryFn:async ()=>{
         const res = await useAxiosSecure.get('/api/v1/users');
-        const filter = res.data.filter(item => item.email !== user.email);
-         return filter;
+           return res.data;
         }
    })
    return {users,isUsersLoading,refetch}
