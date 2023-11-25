@@ -11,7 +11,7 @@ const Employess = () => {
     const {users,isUsersLoading,refetch} = QueryUsers();
  const useAxiosSecure = AxiosSecure();
 const [paymentDetails,setPaymentDetails] = useState({});
-const [paymentError,setPaymentError] = useState('');
+
     const handelVerified = (id,verified) =>{
     useAxiosSecure.patch(`/api/v1/update/user/${id}`,{
       isVerified : !verified
@@ -28,19 +28,8 @@ const openModal = (user) =>{
   setPaymentDetails(user)
   document.getElementById('my_modal_1').showModal()
 }
-
-const handlePayment = (e)=>{
-e.preventDefault();
-setPaymentError('')
-const form = e.target;
-const amount = paymentDetails.salary;
-const month = form.month.value;
-const year = parseInt(form.year.value);
-const date = new Date();
-if(year < date.getFullYear()){
-  setPaymentError('Please enter a valid year')
-  return ;
-}
+const closeModal = ()=>{
+  document.getElementById('my_modal_1').close()
 }
 
  if(isUsersLoading){
@@ -119,52 +108,32 @@ if(year < date.getFullYear()){
   </table>
 </div>
 {/* Open the modal using document.getElementById('ID').showModal() method */}
-<button className="btn" >open modal</button>
+{/* <button className="btn" >open modal</button> */}
 <dialog id="my_modal_1" className="modal">
-  <div className="modal-box">
-   <h1 className='text-2xl text-black text-center font-inter'>Payment Details</h1>
-   <form action="" className='' onSubmit={handlePayment}>
- <div className='space-y-3 py-2'>
-  <h1 className='text-black'>Employee Name: {paymentDetails.name}</h1>
-  <h1 className='text-black'>Amount: ${paymentDetails.salary}</h1>
-  {/* <input type="month" name="" id=""className='py-2 border-2 border-black w-full rounded'/> */}
-  <div>
-    <Payments></Payments>
-  </div>
- <div className='space-y-1'>
- <p>Select month:</p>
-  <select id="monthSelect" name="month" className='py-2 border-2 border-black w-full rounded px-2'>
-        <option value="01">January</option>
-        <option value="02">February</option>
-        <option value="03">March</option>
-        <option value="04">April</option>
-        <option value="05">May</option>
-        <option value="06">June</option>
-        <option value="07">July</option>
-        <option value="08">August</option>
-        <option value="09">September</option>
-        <option value="10">October</option>
-        <option value="11">November</option>
-        <option value="12">December</option>
-    </select>
- </div>
-    
-<div className='space-y-1'>
-  <p>Enter year </p>
-<input type="number" name="year" id="" className='py-2 border-2 border-black w-full  px-2 rounded'/>
-
+<div className="modal-box relative">
+<div className='absolute top-2 right-2 text-black text-xl' onClick={closeModal}>
+  <RxCross2></RxCross2>
 </div>
- </div>
- <button type='submit' disabled = {!paymentDetails.isVerified} className='w-full bg-green-600 text-white py-2 rounded-md'>Confirm Payment</button>
- {paymentError&& <p className='text-red-600'>{paymentError}</p>}
+<h1 className='text-2xl text-black text-center font-inter'>Payment Details</h1>
+
+<Payments paymentDetails={paymentDetails}></Payments>
+ <div className="modal-action">
+   <form method="dialog" className="modal-backdrop">
+     {/* if there is a button in form, it will close the modal */}
+     {/* <button className="btn">Close</button> */}
    </form>
-    <div className="modal-action">
-      <form method="dialog" className="modal-backdrop">
-        {/* if there is a button in form, it will close the modal */}
-        {/* <button className="btn">Close</button> */}
+ </div>
+</div>
+
+   
+<div class="modal-action">
+      <form method="dialog">
+        
+        {/* <button class="btn">Close</button> */}
       </form>
     </div>
-  </div>
+  {/* </div> */}
+
 </dialog>
         </div>
     );
