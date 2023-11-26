@@ -30,7 +30,7 @@ const {email} = useParams();
     return (
         <div>
             <Container>
-                <div className='min-h-[100vh] py-10 font-pop'>
+                <div className='w-[80%] shadow-md py-10 font-pop mx-auto'>
                       <div className='grid md:grid-cols-2 gap-5'>
                         <div className='flex justify-center items-center'>
                             <img src={employee.image} alt="" className='w-72 h-72 rounded-full' />

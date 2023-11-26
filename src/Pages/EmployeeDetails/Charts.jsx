@@ -73,7 +73,7 @@ import { BarChart, Bar, Cell, XAxis, YAxis,Rectangle, CartesianGrid, Tooltip, Le
     return (
       <>
     
-        <BarChart width={1000} height={400} data={data} >
+        <BarChart width={700} height={400} data={data} >
             <XAxis dataKey={'month'}></XAxis>
             <YAxis dataKey={'salary'}></YAxis>
           {/* <Bar dataKey="uv" fill="#8884d8" /> */}

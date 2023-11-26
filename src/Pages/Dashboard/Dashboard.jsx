@@ -9,7 +9,7 @@ import { GrHistory } from "react-icons/gr";
 import Navbar from '../../Components/Navbar/Navbar';
 const Dashboard = () => {
     return (
-        <div className='min-h-[100vh] flex gap-5 font-pop '>
+        <div className='min-h-[100vh] flex gap- font-pop '>
             
             <div className='w-[20%] flex flex-col gap-5  min-h-[100vh] shadow-md text-xl space-y-6 py-5 text-black px-5 sticky top-0'>
             <NavLink
@@ -29,6 +29,15 @@ const Dashboard = () => {
     }
 >
   <div className="flex items-center gap-2"><div className='px-2 py-1 bg-[#a2d2ff] rounded'><PiUsersThreeFill></PiUsersThreeFill> </div><p>Employees</p></div>
+</NavLink>
+<NavLink
+  to="/dashboard/all-employee-list"
+  className={({ isActive, isPending }) =>
+  isPending ? "pending" : isActive ? "bg-gray-100 p-3" : "text-black" 
+
+  }
+>
+  <div className="flex items-center gap-2"><div className='px-2 py-1 bg-[#a2d2ff] rounded'><MdPayment></MdPayment></div><p>All employees</p></div>
 </NavLink>
 <NavLink
   to="/dashboard/progress"
@@ -68,7 +77,7 @@ const Dashboard = () => {
 </NavLink>
 
             </div>
-            <div className='py-5 w-[80%]'>
+            <div className='py-5 w-[80%] bg-gray-100 px-3'>
                 <Outlet></Outlet>
             </div>
         </div>
