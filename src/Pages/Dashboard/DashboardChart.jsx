@@ -15,7 +15,7 @@ import { BarChart, Bar, Cell, XAxis, YAxis,Rectangle, CartesianGrid, Tooltip, Le
     const october  =salaries.filter(salary => salary.month === 'october');
     const november  =salaries.filter(salary => salary.month === 'november');
     const december  =salaries.filter(salary => salary.month === 'december');
-
+    const month = ["Jan", "Feb", "Mar", "Apr", "May", "Jun", "Jul", "Aug", "Sep", "Oct", "Nov", "Dec"];
     const colors = ['#0088FE', '#00C49F','#eb5200', '#FFBB28', '#FF8042', 'red', 'pink','#34eb77','#e8eb34','#34ebae','#ba34eb','#eb3452'];
     const concatAmount = (array)=>{
         const sum = array.reduce((previousValue,currentValue)=> previousValue + currentValue.amount ,0 )
@@ -24,20 +24,20 @@ import { BarChart, Bar, Cell, XAxis, YAxis,Rectangle, CartesianGrid, Tooltip, Le
     
   const data = [
     {
-      month:"january",
+      month:"jan",
       salary: concatAmount(january)
     },
     {
-      month:"february",
+      month:"feb",
       salary: concatAmount(february),
 
     },
     {
-      month:"march",
+      month:"mar",
       salary: concatAmount(march)
     },
     {
-      month: "april",
+      month: "apr",
       salary: concatAmount(april)
     },
     {
@@ -45,31 +45,31 @@ import { BarChart, Bar, Cell, XAxis, YAxis,Rectangle, CartesianGrid, Tooltip, Le
       salary: concatAmount(may)
     },
     {
-      month:"june",
+      month:"jun",
       salary: concatAmount(june)
     },
     {
-      month:"july",
+      month:"jul",
       salary: concatAmount(july)
     },
     {
-      month:"august",
+      month:"aug",
       salary: concatAmount(august)
     },
     {
-      month:"september",
+      month:"sep",
       salary: concatAmount(september)
     },
     {
-      month:"october",
+      month:"oct",
       salary: concatAmount(october)
     },
     {
-      month:"november",
+      month:"nov",
       salary: concatAmount(november)
     },
     {
-      month:"december",
+      month:"dec",
       salary: concatAmount(december)
     }
 
@@ -78,21 +78,17 @@ import { BarChart, Bar, Cell, XAxis, YAxis,Rectangle, CartesianGrid, Tooltip, Le
   console.log(concatAmount(december))
     return (
       <>
-       <div className=''>
-       <BarChart width={750} height={400} data={data} >
+      <ResponsiveContainer width="100%" height={250}>
+<BarChart height={250} data={data} >
             <XAxis dataKey={'month'}></XAxis>
             <YAxis dataKey={'salary'}></YAxis>
-          {/* <Bar dataKey="uv" fill="#8884d8" /> */}
-          {/* <Bar dataKey="salary" fill="#8884d8" activeBar={<Rectangle fill="pink" stroke="blue" />} /> */}
-          {/* <Bar dataKey="uv" fill="#82ca9d" activeBar={<Rectangle fill="gold" stroke="purple" />} /> */}
            <Bar dataKey="salary" fill="#8884d8"  label={{ position: 'top' }}>
         {data.map((entry, index) => (
           <Cell key={`cell-${index}`} fill={colors[index % 20]} />
         ))}
       </Bar> 
         </BarChart>
-
-       </div>
+</ResponsiveContainer>
       </>
     );
   }

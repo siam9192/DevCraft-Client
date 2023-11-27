@@ -8,6 +8,8 @@ import AxiosSecure from '../../../../Hooks/Axios/AxiosSecure';
 import { PieChart } from 'recharts';
 import Piechart from '../../../../Components/PieChart/Piechart';
 import BiaxaBarchart from '../../../../Components/BiaxaBarChart/BiaxaBarchart';
+import Charts from '../../../EmployeeDetails/Charts';
+import DashboardChart from '../../DashboardChart';
 
 
 const AdminDashboard = () => {
@@ -83,25 +85,29 @@ const AdminDashboard = () => {
         </div>
         <div className='grid md:grid-cols-2  gap-5 '>
             <div className='bg-white rounded-md shadow-lg  '>
-               <div className="py-4 border-b-2 px-3">
-               <h1 className='text-2xl text-black font-pop'>Total Salary By Unit</h1>
+               <div className="py-2 border-b-2 px-3">
+               <h1 className='text-2xl text-black font-pop text-capital'>Total Salary By Unit</h1>
                </div>
   <div className='p-4'>
   {
     // dashboardData.salaries && <DashboardChart salaries={dashboardData.salaries}></DashboardChart>
+    // dashboardData.salaries && <Charts salaryHistory={dashboardData.salaries}></Charts>
+    dashboardData.salaries && <Piechart salaries={dashboardData.salaries}></Piechart>
   }
   
   </div>
             </div>
             <div className='bg-white rounded-md shadow-lg  '>
-               <div className="py-4 border-b-2 px-3">
-               <h1 className='text-2xl text-black font-pop'>Submited Worksheets</h1>
+               <div className="py-2 border-b-2 px-3">
+               <h1 className='text-2xl text-black font-pop'>Admin and Hr</h1>
                </div>
   <div className='p-4'>
   {
     // dashboardData.salaries && <DashboardChart salaries={dashboardData.salaries}></DashboardChart>
   }
-  
+  {
+    // dashboardData.salaries && <Charts salaryHistory={d}></Charts>
+  }
   </div>
             </div>
         </div>

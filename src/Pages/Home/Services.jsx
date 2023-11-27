@@ -10,7 +10,7 @@ const Services = () => {
     },[])
     return (
         <div>
-            <h1 className='text-black text-center text-4xl font-semibold font-inter'>Our features & services</h1>
+            <h1 className='text-white text-center text-4xl font-semibold font-inter'>Our features & services</h1>
      <div className='grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-5 py-5 selection:marker:'>
      {
             services.map((service,index)=>{

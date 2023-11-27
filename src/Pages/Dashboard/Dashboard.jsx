@@ -58,9 +58,9 @@ const Dashboard = () => {
 
 </div>
         </div>
-        <div className='min-h-[100vh] flex gap- font-pop relative'>
+        <div className='flex gap- font-pop relative'>
             
-            <div className='lg:block hidden w-[20%] flex flex-col gap-5  min-h-[100vh] shadow-md text-xl space-y-6 py-5 text-black px-5 sticky top-0'>
+            <div className='lg:block hidden w-[20%] flex flex-col gap-5  h-[calc(100vh-100px)] shadow-md text-xl space-y-6 py-5 text-black px-5 sticky top-0'>
          {
             checkUser === 'employee' &&   <Employee></Employee>
          }

@@ -1,6 +1,5 @@
 import React from 'react';
-import { PieChart, Pie, Sector, Cell, ResponsiveContainer } from 'recharts';
-
+import { PieChart, Pie, Tooltip,Cell, ResponsiveContainer } from 'recharts';
 const Piechart = ({salaries}) => {
     const january  = salaries.find(salary => salary.month === 'january');
     const february  = salaries.find(salary => salary.month === 'february');
@@ -70,40 +69,26 @@ const Piechart = ({salaries}) => {
 
   ]
     return (
-        <div>
-             <PieChart width={300} height={400} onMouseEnter={this.onPieEnter}>
+      <ResponsiveContainer width="100%" height={250}>
+      <PieChart>
         <Pie
           data={data}
-          cx={120}
-          cy={200}
+          dataKey="salary"
+          nameKey="month"
+          cx="50%"
+          cy="50%"
           innerRadius={60}
           outerRadius={80}
           fill="#8884d8"
           paddingAngle={5}
-          dataKey="salary"
-        >
-          {data.map((entry, index) => (
+        />
+        {data.map((entry, index) => (
             <Cell key={`cell-${index}`} fill={COLORS[index % COLORS.length]} />
           ))}
-        </Pie>
-        <Pie
-          data={data}
-          cx={420}
-          cy={200}
-          startAngle={180}
-          endAngle={0}
-          innerRadius={60}
-          outerRadius={80}
-          fill="#8884d8"
-          paddingAngle={5}
-          dataKey="salary"
-        >
-          {data.map((entry, index) => (
-            <Cell key={`cell-${index}`} fill={COLORS[index % COLORS.length]} />
-          ))}
-        </Pie>
+        <Tooltip />
+        
       </PieChart>
-        </div>
+    </ResponsiveContainer>
     );
 }
 

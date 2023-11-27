@@ -2,8 +2,12 @@ import { NavLink } from 'react-router-dom';
 import Container from '../Reuse/Container/Container';
 import { HiOutlineLogin } from "react-icons/hi";
 import UseAuth from '../../Hooks/UserAuth/UseAuth';
-
+import { GiHamburgerMenu } from "react-icons/gi";
+import ResponsiveNavbar from './ResponsiveNavbar';
+import { useState } from 'react';
+import { RxCross1 } from 'react-icons/rx';
 const Navbar = () => {
+  const [toggle,setToggle] = useState(false);
   const {user,logout} = UseAuth();
     return (
         <div className='w-full bg-primary py-5'>
@@ -13,7 +17,7 @@ const Navbar = () => {
         <h1 className='text-white text-4xl font-oswlad font-semibold'>Innovexa Software</h1>
          <p className='text-gray-800 textxl -mt-2 font-inter font-bold'>Employee Management</p>
         </div>
-        <nav className='flex justify-between items-center gap-5 text-xl text-black '>
+        <nav className='lg:flex justify-between items-center gap-5 text-xl text-black lg:block hidden '>
         <NavLink
   to="/messages"
   className={({ isActive, isPending }) =>
@@ -75,8 +79,15 @@ Dashboard
 </div>
 }
         </nav>
+        <div className='lg:hidden' onClick={()=> setToggle(!toggle)}>
+        
+        {
+          toggle ?   <RxCross1 className='text-3xl text-white'></RxCross1>:  <GiHamburgerMenu className='text-3xl text-white'></GiHamburgerMenu>
+        }
+        </div>
             </div>
             </Container>
+            <ResponsiveNavbar toggle={toggle}></ResponsiveNavbar>
         </div>
     )
 }

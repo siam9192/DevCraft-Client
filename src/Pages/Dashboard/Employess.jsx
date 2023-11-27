@@ -62,13 +62,13 @@ const next = ()=>{
  }
     return (
     
-        <div className='py-5 space-y-5'>
+        <div className='py- space-y-5'>
           <Dashboardbar pathName={'Employees'} barText={'Employees'}></Dashboardbar>
-          <div className='w-full  py-6 px-3 shadow-md rounded-md bg-white'>
+          {/* <div className='w-full  py-4 px-3 shadow-md rounded-md bg-white'>
               <h1 className='text-2xl text-black font- font-semibold '>{data.totalUsers} Employees found</h1>
-          </div>
-            <div className="overflow-x-auto shadow-lg bg-white ">
-              <div className='h-[500px]'>
+          </div> */}
+            <div className="overflow-x-auto shadow-lg rounded-md bg-white ">
+              <div className='h-[400px]'>
               <table className="table">
     {/* head */}
     <thead className='text-black'>

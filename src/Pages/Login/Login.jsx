@@ -20,21 +20,25 @@ const Login = () => {
 
         login(email,password)
         .then(async res =>{
-        // await  AxiosBase().get(`/api/v1/isFired/${email}`)
-        //   .then(res =>{
-        //       if(res.data.isFired){
-        //           logout();
-        //           setError('You had fired')
-        //       }
-        //   })
-         if(state){
-           navigate(state)
-           setLoading(false)
-         }
- else{
-   navigate('/')
-    setLoading(false)
- }
+        await  AxiosBase().post(`/api/v1/isFired/`,{email})
+          .then(res =>{
+              if(res.data.isFired){
+                  logout();
+                  setLoading(false)
+                  setError("You can't login because you have fired")
+                  return
+
+              }
+              if(state){
+                navigate(state)
+                setLoading(false)
+              }
+      else{
+        navigate('/')
+         setLoading(false)
+      }
+          })
+         
         })
  .catch(err =>{
     setLoading(false)

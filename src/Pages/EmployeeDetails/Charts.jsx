@@ -20,20 +20,20 @@ import { BarChart, Bar, Cell, XAxis, YAxis,Rectangle, CartesianGrid, Tooltip, Le
 
   const data = [
     {
-      month:"january",
+      month:"jan",
       salary: january ? january.amount: 0,
     },
     {
-      month:"february",
+      month:"feb",
       salary: february ? february.amount : 0,
 
     },
     {
-      month:"march",
+      month:"mar",
       salary: march ? march.amount : 0
     },
     {
-      month: "april",
+      month: "apr",
       salary: april ? april.amount : 0
     },
     {
@@ -41,7 +41,7 @@ import { BarChart, Bar, Cell, XAxis, YAxis,Rectangle, CartesianGrid, Tooltip, Le
       salary: may ? may.amount : 0
     },
     {
-      month:"june",
+      month:"jun",
       salary: june ? june.amount : 0
     },
     {
@@ -49,23 +49,23 @@ import { BarChart, Bar, Cell, XAxis, YAxis,Rectangle, CartesianGrid, Tooltip, Le
       salary: july ? july.amount : 0
     },
     {
-      month:"august",
+      month:"aug",
       salary: august ? august.amount : 0
     },
     {
-      month:"september",
+      month:"sept",
       salary: september ? september.amount : 0
     },
     {
-      month:"october",
+      month:"oct",
       salary: october ? october.amount : 0
     },
     {
-      month:"november",
+      month:"nov",
       salary: november ? november.amount : 0
     },
     {
-      month:"december",
+      month:"dec",
       salary: december ? december.amount : 0
     }
 
@@ -73,20 +73,17 @@ import { BarChart, Bar, Cell, XAxis, YAxis,Rectangle, CartesianGrid, Tooltip, Le
   console.log(data)
     return (
       <>
-    
-        <BarChart width={700} height={400} data={data} >
+<ResponsiveContainer width="100%" height={250}>
+<BarChart height={250} data={data} >
             <XAxis dataKey={'month'}></XAxis>
             <YAxis dataKey={'salary'}></YAxis>
-          {/* <Bar dataKey="uv" fill="#8884d8" /> */}
-          {/* <Bar dataKey="salary" fill="#8884d8" activeBar={<Rectangle fill="pink" stroke="blue" />} /> */}
-          {/* <Bar dataKey="uv" fill="#82ca9d" activeBar={<Rectangle fill="gold" stroke="purple" />} /> */}
            <Bar dataKey="salary" fill="#8884d8"  label={{ position: 'top' }}>
         {data.map((entry, index) => (
           <Cell key={`cell-${index}`} fill={colors[index % 20]} />
         ))}
       </Bar> 
         </BarChart>
-
+</ResponsiveContainer>
       </>
     );
   }

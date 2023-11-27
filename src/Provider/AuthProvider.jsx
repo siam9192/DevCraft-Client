@@ -22,13 +22,23 @@ const AuthProvider = ({children}) => {
     useEffect(()=>{
 const observer = onAuthStateChanged(auth,currentUser =>{
     if(currentUser){
-        
-       setUser(currentUser)
-       setLoading(false)
-       AxiosBase().post('/api/v1/jwt',{email:currentUser.email})
-       .then(res => {
-        localStorage.setItem('access-token',res.data.token)
-       })
+      AxiosBase().post(`/api/v1/isFired/`,{email:currentUser.email})
+      .then(res => {
+        if(res.data.isFired){
+            logout();
+            setLoading(false)
+        }
+        else{
+            setUser(currentUser)
+            setLoading(false)
+            AxiosBase().post('/api/v1/jwt',{email:currentUser.email})
+            .then(res => {
+             localStorage.setItem('access-token',res.data.token)
+            })
+        }
+      })
+       
+    
      
     }
     else{

@@ -19,7 +19,7 @@ useState(()=>{
 
     return (
         <div>
-            <h1 className='text-4xl text-center text-black font-semibold font-inter'>What Our Clients Are Saying</h1>
+            <h1 className='text-4xl text-center text-white font-semibold font-inter'>What Our Clients Are Saying</h1>
           
 <div className='py-10'>
       <Swiper

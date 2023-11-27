@@ -42,12 +42,12 @@ const changeRole = (id,role)=>{
       return <div className='flex justify-center items-center  min-h-[100vh] w-full'><span class="loading loading-infinity loading-lg text-blue-600 text-center text-9xl"></span></div>
      }
     return (
-        <div className='py-5 space-y-5 bg-white'>
+        <div className='py-5 space-y-5 '>
           <Dashboardbar pathName={'All Employee'} barText={'Employees'}></Dashboardbar>
-        <div className='w-full  py-6 px-3 shadow-md rounded-md'>
-            <h1 className='text-2xl text-black font- font-semibold '>9 People found</h1>
+        <div className='w-full  py-6 px-3 shadow-md rounded-md bg-white '>
+            <h1 className='text-2xl text-black font- font-semibold '>{employees.length} Employees found</h1>
         </div>
-      <div>
+      <div className='bg-white  overflow-x-auto p-5 rounded-md'>
       <div className='grid grid-cols-5 font-semibold'>
             <div><h1 className="text-xl text-black">Name</h1></div>
             <div><h1 className="text-xl text-black">Designation</h1></div>
@@ -55,7 +55,7 @@ const changeRole = (id,role)=>{
             <div><h1 className="text-xl text-black">Action</h1></div>
             <div><h1 className="text-xl text-black">Role</h1></div>
             {/* <div><button className='w-full border-2 border-amber-500 py-2'>Make HR</button></div>
-            <div><button className='w-full border-2 border-amber-500 py-2'>Fired</button></div> */}\
+            <div><button className='w-full border-2 border-amber-500 py-2'>Fired</button></div> */}
              
         </div>
         <div className="flex flex-col ">

@@ -9,7 +9,8 @@ const Progress = () => {
     const useAxiosSecure = AxiosSecure();
     const [name,setName] = useState('All');
     // const [worksheets,setWorksheets] = useState([])
-    const {users} = QueryUsers();
+    const [employees,setEmployees] = useState([])
+    
     const {data:worksheets,isLoading,refetch} = useQuery({
         queryKey:['progress'],
         queryFn:async()=>{
@@ -25,10 +26,14 @@ const Progress = () => {
         }
     })
   useEffect(()=>{
+    useAxiosSecure.get('/api/v1/users')
+    .then(res =>{
+      setEmployees(res.data)
+    })
     refetch()
   },[name])
     return (
-        <div className='py-5 space-y-5 px-3'>
+        <div className='py-5 space-y-5 px-3 h-full'>
        
            <Dashboardbar pathName={'Progress'} barText={'Progress'}></Dashboardbar>
 
@@ -42,8 +47,8 @@ const Progress = () => {
                 <select name="" id="" className='w-full py-2  p-2' onChange={(e)=> setName(e.target.value)}>
                     <option value="All"  selected>All</option>
                     {
-                        users.map((item,index)=>{
-                            return <option value={users.name}>{item.name}</option>
+                        employees?.map((employee,index)=>{
+                            return <option value={employee.name} key={index}>{employee.name}</option>
                         })
                     }
                 </select>
