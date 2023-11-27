@@ -11,6 +11,10 @@ import PaymentHistory from "../Pages/Dashboard/PaymentHistory";
 import WorkSheet from "../Pages/Dashboard/WorkSheet";
 import EmployeeDetails from "../Pages/EmployeeDetails/EmployeeDetails";
 import AllEmployees from "../Pages/Dashboard/AllEmployees";
+import PrivateRoutes from "../Components/PrivateRoute/PrivateRoute";
+import AdminRoutes from "../Components/AdminRoutes/AdminRoutes";
+import HrRoutes from "../Components/HrRoutes/HrRoutes";
+import EmployeeRoutes from "../Components/EmployeeRoutes/EmployeeRoutes";
 const router = createBrowserRouter([
     {
         path:'/',
@@ -32,32 +36,32 @@ const router = createBrowserRouter([
     },
     {
         path:'/dashboard',
-        element:<Dashboard></Dashboard>,
+        element:<PrivateRoutes><Dashboard></Dashboard></PrivateRoutes>,
         children:[
             {
-                path:'/dashboard/main',
+                path:'/dashboard',
                 element: <DashboardMain></DashboardMain>
             },
             {
                 path:'/dashboard/employee-list',
-                element:<Employess></Employess>
+                element:<PrivateRoutes><Employess></Employess></PrivateRoutes>
             },
             {
                 path:'/dashboard/all-employee-list',
-                element:<AllEmployees></AllEmployees>
+                element:<PrivateRoutes><AdminRoutes><AllEmployees></AllEmployees></AdminRoutes></PrivateRoutes>
             }
             ,
             {
                 path:'/dashboard/progress',
-                element:<Progress></Progress>
+                element:<PrivateRoutes><HrRoutes><Progress></Progress></HrRoutes></PrivateRoutes>
             },
             {
                 path:'/dashboard/payment-history',
-                element:<PaymentHistory></PaymentHistory>
+                element:<PrivateRoutes><EmployeeRoutes>< PaymentHistory></PaymentHistory></EmployeeRoutes></PrivateRoutes>
             },
             {
                 path:'/dashboard/work-sheet',
-                element:<WorkSheet></WorkSheet>
+                element:<PrivateRoutes><EmployeeRoutes><WorkSheet></WorkSheet></EmployeeRoutes></PrivateRoutes>
             }
         ],
 

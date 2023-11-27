@@ -22,8 +22,10 @@ const AuthProvider = ({children}) => {
     useEffect(()=>{
 const observer = onAuthStateChanged(auth,currentUser =>{
     if(currentUser){
+        
        setUser(currentUser)
-       AxiosBase().post('/api/v1/jwt')
+       setLoading(false)
+       AxiosBase().post('/api/v1/jwt',{email:currentUser.email})
        .then(res => {
         localStorage.setItem('access-token',res.data.token)
        })

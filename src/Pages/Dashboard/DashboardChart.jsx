@@ -1,6 +1,6 @@
 import React from 'react';
 
-import { BarChart, Bar, Cell, XAxis, YAxis,Rectangle, CartesianGrid, Tooltip, Legend, ResponsiveContainer, Pie, PieChart } from 'recharts';
+import { BarChart, Bar, Cell, XAxis, YAxis,Rectangle, CartesianGrid, Tooltip, Legend, ResponsiveContainer } from 'recharts';
 
   const DashboardChart = ({salaries}) =>{
     const january  =salaries.filter(salary => salary.month === 'january');
@@ -79,25 +79,18 @@ import { BarChart, Bar, Cell, XAxis, YAxis,Rectangle, CartesianGrid, Tooltip, Le
     return (
       <>
        <div className=''>
-       {/* <ResponsiveContainer> */}
-          <PieChart  width={600} height={400}>
-            <Pie dataKey="salary" data={data} fill="#8884d8" label >   {data.map((entry, index) => (
-          <Cell key={`cell-${index}`} fill={colors[index % 20]} cx="50%"
-          cy="50%"
-          labelLine={false}
-        
-          outerRadius={80}
-         />
-            ))} </Pie>
-
-          </PieChart>
-        {/* </ResponsiveContainer> */}
-           {/* <Bar dataKey="salary" fill="#8884d8"  label={{ position: 'top' }}>
+       <BarChart width={750} height={400} data={data} >
+            <XAxis dataKey={'month'}></XAxis>
+            <YAxis dataKey={'salary'}></YAxis>
+          {/* <Bar dataKey="uv" fill="#8884d8" /> */}
+          {/* <Bar dataKey="salary" fill="#8884d8" activeBar={<Rectangle fill="pink" stroke="blue" />} /> */}
+          {/* <Bar dataKey="uv" fill="#82ca9d" activeBar={<Rectangle fill="gold" stroke="purple" />} /> */}
+           <Bar dataKey="salary" fill="#8884d8"  label={{ position: 'top' }}>
         {data.map((entry, index) => (
           <Cell key={`cell-${index}`} fill={colors[index % 20]} />
         ))}
-      </Bar>  */}
-        {/* </BarChart> */}
+      </Bar> 
+        </BarChart>
 
        </div>
       </>

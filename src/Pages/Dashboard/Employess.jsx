@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import QueryUsers from '../../Hooks/Tanstack/QueryUsers';
 import { GiCheckMark } from "react-icons/gi";
 import { RxCross2 } from "react-icons/rx";
@@ -7,12 +7,23 @@ import { Axios } from 'axios';
 import {Link} from 'react-router-dom'
 import AxiosSecure from '../../Hooks/Axios/AxiosSecure';
 import Payments from '../../Components/Payments/Payments';
+import Dashboardbar from '../../Components/Dashboardbar';
 
 const Employess = () => {
-    const {users,isUsersLoading,refetch} = QueryUsers();
+  const [pages,setPages] = useState ([]);
+const [currentPage,setCurrentPage] = useState(1);
+    const {data,isUsersLoading,refetch} = QueryUsers(currentPage);
  const useAxiosSecure = AxiosSecure();
 const [paymentDetails,setPaymentDetails] = useState({});
-
+useEffect(()=>{
+  refetch()
+  const total_users = data.totalUsers;
+  let array = [];
+  for(let i = 0; i < Math.ceil(total_users/5);i++){
+   array.push(i+1)
+  }
+  setPages([...array])
+},[data.users,currentPage])
     const handelVerified = (id,verified) =>{
     useAxiosSecure.patch(`/api/v1/update/user/${id}`,{
       isVerified : !verified
@@ -33,21 +44,32 @@ const closeModal = ()=>{
   document.getElementById('my_modal_1').close()
 }
 
+const prev = ()=>{
+  const count = currentPage-1;
+  if(count > 0){
+    setCurrentPage(count)
+  }
+}
+const next = ()=>{
+  const count = currentPage + 1;
+  
+  if(count <= pages[pages.length-1]){
+    setCurrentPage(count)
+  }
+}
  if(isUsersLoading){
-  return <div className='flex justify-center  min-h-[100vh] w-full'><span class="loading loading-infinity loading-lg text-blue-600 text-center text-8xl"></span></div>
+  return <div className='flex justify-center items-center  min-h-[100vh] w-full'><span class="loading loading-infinity loading-lg text-blue-600 text-center text-9xl"></span></div>
  }
     return (
     
         <div className='py-5 space-y-5'>
-          <div className='w-full  py-6 px-3 flex justify-between items-center shadow-md rounded-md'>
-         <div className='flex items-center gap-2'><MdDashboard className='text-3xl text-blue-600'></MdDashboard> <h3 className='text-xl '>Home/Employees</h3></div>
-         <h3 className='text-2xl font-semibold'>Employees</h3>
+          <Dashboardbar pathName={'Employees'} barText={'Employees'}></Dashboardbar>
+          <div className='w-full  py-6 px-3 shadow-md rounded-md bg-white'>
+              <h1 className='text-2xl text-black font- font-semibold '>{data.totalUsers} Employees found</h1>
           </div>
-          <div className='w-full  py-6 px-3 shadow-md rounded-md'>
-              <h1 className='text-2xl text-black font- font-semibold '>{users.length} People found</h1>
-          </div>
-            <div className="overflow-x-auto shadow-lg">
-  <table className="table">
+            <div className="overflow-x-auto shadow-lg bg-white ">
+              <div className='h-[500px]'>
+              <table className="table">
     {/* head */}
     <thead className='text-black'>
       <tr>
@@ -64,7 +86,7 @@ const closeModal = ()=>{
     <tbody>
       {/* row 1 */}
       {
-        users?.map((user,index)=>{
+        data.users?.map((user,index)=>{
           return  <tr key={index}>
             <td>
           <div className="flex items-center gap-3">
@@ -88,25 +110,29 @@ const closeModal = ()=>{
         <td>BDT {user.salary} </td>
         <td><button className='w-full bg-green-600 text-white py-2' onClick={()=> openModal(user)}>pay</button></td>
         <td>
-        <Link to = {`/details/${user.email}`}><button className="btn btn-ghost btn-xs bg-blue-800 text-white">details</button></Link>
+        <Link to = {`/details/${user.email}`}><button className="btn btn-ghost btn-xs bg-blue-800 text-white" >details</button></Link>
         </td>
       </tr>
         })
       }
       
     </tbody>
-    {/* foot */}
-    <tfoot>
-      {/* <tr>
-        <th></th>
-        <th>Name</th>
-        <th>Job</th>
-        <th>Favorite Color</th>
-        <th></th>
-      </tr> */}
-    </tfoot>
     
   </table>
+              </div>
+  
+   <div className='flex justify-center items-center'>
+     <div className='flex items-center gap-2 text-black'>
+     <button onClick={prev}>Prev</button>
+     {
+     pages.map((page,index)=>{
+    return <button key={index} className={`${currentPage === page ? 'text-red-500' : ''}`} onClick={()=> setCurrentPage(page)}>{page}</button>
+     })
+     }
+     <button onClick={next} >Next</button>
+     </div>
+     
+    </div>
 </div>
 {/* Open the modal using document.getElementById('ID').showModal() method */}
 {/* <button className="btn" >open modal</button> */}

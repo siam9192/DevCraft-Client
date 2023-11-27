@@ -4,6 +4,7 @@ import { MdDashboard } from 'react-icons/md';
 import AxiosSecure from '../../Hooks/Axios/AxiosSecure';
 import UseAuth from '../../Hooks/UserAuth/UseAuth';
 import QueryPaymentHistory from '../../Hooks/Tanstack/QueryPaymentHistory';
+import Dashboardbar from '../../Components/Dashboardbar';
 
 const PaymentHistory = () => {
   //  const [paymentHistories,setPaymentHistories] = useState([]);
@@ -15,14 +16,11 @@ const PaymentHistory = () => {
    
     return (
         <div className='py-5 space-y-5 '>
-        <div className='w-full  py-6 px-3 flex justify-between items-center shadow-md rounded-md'>
-       <div className='flex items-center gap-2'><MdDashboard className='text-3xl text-blue-600'></MdDashboard> <h3 className='text-xl '>Home/Employees</h3></div>
-       <h3 className='text-2xl font-semibold'>Employees</h3>
+      <Dashboardbar pathName={'Payment history'} barText={'Payments'}></Dashboardbar>
+        <div className='w-full  py-6 px-3 shadow-md rounded-md bg-white'>
+            <h1 className='text-2xl text-black font- font-semibold '>{history?.length} People found</h1>
         </div>
-        <div className='w-full  py-6 px-3 shadow-md rounded-md'>
-            <h1 className='text-2xl text-black font- font-semibold '>8 People found</h1>
-        </div>
-        <div className="overflow-x-auto shadow-lg">
+        <div className="overflow-x-auto shadow-lg bg-white rounded-md">
   <table className="table">
     {/* head */}
     <thead className='text-black '>

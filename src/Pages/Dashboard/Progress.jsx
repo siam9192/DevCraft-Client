@@ -3,6 +3,7 @@ import React, { useEffect, useState } from 'react';
 import { MdDashboard } from 'react-icons/md';
 import AxiosSecure from '../../Hooks/Axios/AxiosSecure';
 import QueryUsers from '../../Hooks/Tanstack/QueryUsers';
+import Dashboardbar from '../../Components/Dashboardbar';
 
 const Progress = () => {
     const useAxiosSecure = AxiosSecure();
@@ -28,13 +29,12 @@ const Progress = () => {
   },[name])
     return (
         <div className='py-5 space-y-5 px-3'>
-        <div className='w-full  py-6 flex justify-between items-center shadow-md rounded-md'>
-       <div className='flex items-center gap-2'><MdDashboard className='text-3xl text-blue-600'></MdDashboard> <h3 className='text-xl '>Home/Employees</h3></div>
-       <h3 className='text-2xl font-semibold'>Employees</h3>
-        </div>
+       
+           <Dashboardbar pathName={'Progress'} barText={'Progress'}></Dashboardbar>
+
         <div>
 
-        <div className="overflow-x-auto">
+        <div className="overflow-x-auto bg-white p-6 rounded-lg min-h-[200px]">
         <div className='w-full  py-6  rounded-md flex justify-between items-center'>
             <h1 className='text-2xl text-black font- font-semibold '>{worksheets?.length} worksheet found</h1>
             <div className='flex items-center gap-2'>

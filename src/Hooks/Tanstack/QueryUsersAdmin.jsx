@@ -9,7 +9,7 @@ const QueryUsersAdmin = () => {
    const {data:users = [],isLoading:isUsersLoading,refetch} = useQuery({
     queryKey:['users-admin'],
     queryFn:async ()=>{
-        const res = await useAxiosSecure.get('/api/v1/users');
+        const res = await useAxiosSecure.get('/api/v1/admin/users');
            return res.data;
         }
    })

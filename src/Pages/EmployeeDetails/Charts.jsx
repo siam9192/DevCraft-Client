@@ -2,6 +2,7 @@ import React, { PureComponent } from 'react';
 import { BarChart, Bar, Cell, XAxis, YAxis,Rectangle, CartesianGrid, Tooltip, Legend, ResponsiveContainer } from 'recharts';
 
   const Charts = ({salaryHistory}) =>{
+    console.log(salaryHistory)
     const january  = salaryHistory.find(salary => salary.month === 'january');
     const february  = salaryHistory.find(salary => salary.month === 'february');
     const march  = salaryHistory.find(salary => salary.month === 'march');

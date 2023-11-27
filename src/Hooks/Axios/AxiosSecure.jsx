@@ -6,7 +6,7 @@ const AxiosSecure = () => {
         baseURL:"http://localhost:8000"
      })
      instance.interceptors.request.use(function(config){
-   const token = localStorage.getItem('access_token');
+   const token = localStorage.getItem('access-token');
    config.headers.authorization = `Access-token ${token}`
    return config;
      },function(error){

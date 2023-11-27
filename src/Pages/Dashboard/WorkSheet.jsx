@@ -5,6 +5,7 @@ import "react-datepicker/dist/react-datepicker.css";
 import AxiosSecure from "../../Hooks/Axios/AxiosSecure";
 import UseAuth from "../../Hooks/UserAuth/UseAuth";
 import QueryWorksheet from "../../Hooks/Tanstack/QueryWorksheet";
+import Dashboardbar from "../../Components/Dashboardbar";
 
 const WorkSheet = () => {
     const [startDate, setStartDate] = useState(new Date())
@@ -38,19 +39,12 @@ const WorkSheet = () => {
 
     return (
        <div className='py-5 space-y-5'>
-          <div className='flex justify-between items-center shadow-md rounded-md py-6 px-2 mx-3'>
-         <div className='flex items-center gap-2'><MdDashboard className='text-3xl text-blue-600'></MdDashboard> <h3 className='text-xl '>Home/Employees</h3></div>
-         <h3 className='text-2xl font-semibold'>Work sheet</h3>
-          </div>
-          {/* <div className='w-full  py-6 px-3 shadow-md rounded-md'>
-              <h1 className='text-2xl text-black font- font-semibold '> 7 People found</h1>
-          </div> */}
+         <Dashboardbar pathName={'Worksheets'} barText={'Worksheets'}></Dashboardbar>
+            <form action="" className="w-full py-6 px-3 space-y-2 shadow-md bg-white" onSubmit={submitTask}>
 
-            <form action="" className="w-full py-6 px-3 space-y-2 shadow-md" onSubmit={submitTask}>
-                <h1 className="text-xl text-black ">Submit your working task</h1>
-          <div className=" flex justify-between gap-3  rounded-md">
+          <div className=" grid md:grid-cols-4 grid-cols-2 gap-3  rounded-md">
            <div className="flex-1">
-            <h3>Tasks</h3>
+            <h3 className="py-1">Tasks</h3>
             <select name="task" id="" className="w-full py-2 px-2">
                 <option value="sales">Sales</option>
                 <option value="support">Support</option>
@@ -59,15 +53,15 @@ const WorkSheet = () => {
             </select>
            </div>
            <div className="flex-1">
-            <h3>Date</h3>
+            <h3 className="py-1">Date</h3>
            <DatePicker selected={startDate} onChange={(date) => setStartDate(date)} className="w-full py-2  border-2" />
            </div>
            <div className="flex-1">
-            <h3>Working hours</h3>
+            <h3 className="py-1">Working hours</h3>
             <input type="number" name="work_hour" id="" placeholder="Worked hours" className="w-full py-2 px-2 rounded border-2  border-black" />
            </div>
-           <div className="flex-1">
-            
+           <div className="flex-1 ">
+            <h3 className="py-1">Click on </h3>
             <button type="submit" className="w-1/2 py-2 bg-blue-700 text-white ">Submit</button>
            </div>
           </div>
