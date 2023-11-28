@@ -6,7 +6,7 @@ import AxiosSecure from "../../Hooks/Axios/AxiosSecure";
 import UseAuth from "../../Hooks/UserAuth/UseAuth";
 import QueryWorksheet from "../../Hooks/Tanstack/QueryWorksheet";
 import Dashboardbar from "../../Components/Dashboardbar";
-
+import toast, { Toaster } from "react-hot-toast";
 const WorkSheet = () => {
     const [startDate, setStartDate] = useState(new Date())
     const useAxiosSecure = AxiosSecure();
@@ -32,15 +32,16 @@ const WorkSheet = () => {
  useAxiosSecure.post('/api/v1/worksheet/add',workSheet)
  .then(res => {
    if(res.data.insertedId){
-    worksheetsRefetch()
+    worksheetsRefetch();
+    toast.success('Successfully added!')
    }
  })
   }
 
     return (
-       <div className='py-5 space-y-5'>
+       <div className='py-5 space-y-5 h-[calc(100vh-100px)]'>
          <Dashboardbar pathName={'Worksheets'} barText={'Worksheets'}></Dashboardbar>
-            <form action="" className="w-full py-6 px-3 space-y-2 shadow-md bg-white" onSubmit={submitTask}>
+            <form action="" className="w-full py-3 px-3 space-y-2 shadow-md bg-white" onSubmit={submitTask}>
 
           <div className=" grid md:grid-cols-4 grid-cols-2 gap-3  rounded-md">
            <div className="flex-1">
@@ -52,7 +53,7 @@ const WorkSheet = () => {
                 <option value="paper-work">Paper work</option>
             </select>
            </div>
-           <div className="flex-1">
+           <div className="flex-1 ">
             <h3 className="py-1">Date</h3>
            <DatePicker selected={startDate} onChange={(date) => setStartDate(date)} className="w-full py-2  border-2" />
            </div>
@@ -66,8 +67,7 @@ const WorkSheet = () => {
            </div>
           </div>
           </form>
- 
-         <div className="bg-white shadow-lg w-full  py-2 px-3 ">
+         <div className="bg-white shadow-lg w-full max-h-[350px] overflow-scroll  py-2 px-3 ">
             <div className="grid grid-cols-3 p-5 border-b-2">
             <div>
                 <h1 className="text-xl text-black">Task</h1>
@@ -97,7 +97,10 @@ const WorkSheet = () => {
                 })
              }
          </div>
-
+         <Toaster
+  position="top-center"
+  reverseOrder={false}
+/>
           </div>
     );
 }

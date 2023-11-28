@@ -23,13 +23,24 @@ useState(()=>{
           
 <div className='py-10'>
       <Swiper
-        slidesPerView={3}
+        // slidesPerView={3}
         spaceBetween={30}
         pagination={{
           clickable: true,
         }}
-        
+        breakpoints={{
+          768: {
+            slidesPerView: 1,
+            spaceBetween: 20,
+          },
+          1024: {
+            slidesPerView: 3,
+            spaceBetween: 30,
+          },
+          // Add more breakpoints as needed
+        }}
         modules={[Pagination]}
+        
         className="mySwiper"
       >
      {

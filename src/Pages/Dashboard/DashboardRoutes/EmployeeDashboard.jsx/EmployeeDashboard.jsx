@@ -5,6 +5,7 @@ import { TbMoneybag } from "react-icons/tb";
 import { FaArrowRight, FaArrowRightToBracket, FaUsers } from 'react-icons/fa6';
 import UseAuth from '../../../../Hooks/UserAuth/UseAuth';
 import AxiosSecure from '../../../../Hooks/Axios/AxiosSecure';
+import DashboardChart from '../../DashboardChart';
 
 
 const EmployeeDashboard = () => {
@@ -25,7 +26,7 @@ const EmployeeDashboard = () => {
      
   },[])
     
-  
+  console.log(dashboardData.salaries)
 
         return (
         <div className='space-y-4'>
@@ -40,29 +41,29 @@ const EmployeeDashboard = () => {
        </div>
        
         <div className='grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-5'>
-            <div className='p-8 bg-blue-600 flex items-center justify-between rounded-lg'>
-                <div>
-                    <h1 className='text-white text-2xl font-semibold'>Employees</h1>
-                    <h1 className='text-white text-2xl font-semibold'>{dashboardData.total_employees}</h1>
-                </div>
-          <div className='text-black text-4xl px-4 py-3 bg-white rounded-md'>
-          <FaUsers></FaUsers>
-          </div>
-            </div>
+            
             <div className='p-8 bg-amber-400 flex items-center justify-between rounded-lg'>
                 <div>
                     <h1 className='text-white text-2xl font-semibold'>Worksheets</h1>
-                    <h1 className='text-white text-2xl font-semibold'>{dashboardData.worksheets}</h1>
+                    <h1 className='text-white text-2xl font-semibold'>{dashboardData.worksheets?.length}</h1>
                 </div>
           <div className='text-black text-4xl px-4 py-3 bg-white rounded-md'>
           <GrWorkshop></GrWorkshop>
           </div>
             </div>
-          
+            <div className='p-8 bg-blue-600 flex items-center justify-between rounded-lg'>
+                <div>
+                    <h1 className='text-white text-2xl font-semibold'>Salary recived</h1>
+                    <h1 className='text-white text-2xl font-semibold'>{dashboardData?.salaryCount}</h1>
+                </div>
+          <div className='text-black text-4xl px-4 py-3 bg-white rounded-md'>
+          <TbMoneybag></TbMoneybag>
+          </div>
+            </div>
             <div className='p-8 bg-green-600 flex items-center justify-between rounded-lg'>
                 <div>
                     <h1 className='text-white text-2xl font-semibold'>Salary</h1>
-                    <h1 className='text-white text-2xl font-semibold'>${dashboardData.total_salaries}</h1>
+                    <h1 className='text-white text-2xl font-semibold'>${dashboardData?.total_salaries}</h1>
                 </div>
           <div className='text-black text-4xl px-4 py-3 bg-white rounded-md'>
         <TbMoneybag></TbMoneybag>
@@ -73,16 +74,28 @@ const EmployeeDashboard = () => {
         <div className='grid md:grid-cols-2  gap-5 '>
             <div className='bg-white rounded-md shadow-lg  '>
                <div className="py-4 border-b-2 px-3">
-               <h1 className='text-2xl text-black font-pop'>Total Salary By Unit</h1>
+               <h1 className='text-2xl text-black font-pop'>Salary received ({new Date().getFullYear()})</h1>
                </div>
   <div className='p-4'>
   {
-    // dashboardData.salaries && <DashboardChart salaries={dashboardData.salaries}></DashboardChart>
+    dashboardData.salaries && <DashboardChart salaries={dashboardData.salaries}></DashboardChart>
   }
   </div>
             </div>
-            <div className='bg-white rounded-lg shadow-md'>
-             <div><h1>Submited worksheets </h1></div>
+            <div className='bg-white rounded-md shadow-lg  '>
+               <div className="py-4 border-b-2 px-3">
+               <h1 className='text-2xl text-black font-pop'>Salary received ({new Date().getFullYear()})</h1>
+               </div>
+  <div className='p-4'>
+    <div className='flex justify-between items-center'></div>
+  {
+    dashboardData.worksheets?.map((worksheet,index)=>{
+        return <div className='grid grid-cols-3'>
+             <h1>{worksheet.task}</h1>   <h1>{worksheet.working_hours}</h1>   <h1>{worksheet.date}</h1> 
+        </div>
+    })
+  }
+  </div>
             </div>
         </div>
         </div>

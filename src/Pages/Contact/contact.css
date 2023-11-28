@@ -1,0 +1,6 @@
+.contact{
+        background-image: url('/banner/banner3.jpg'),linear-gradient(rgba(0, 0, 0, 0.8), rgba(0, 0, 0, 0.6));
+        background-position: center;
+        background-size: cover;
+        background-blend-mode: overlay;
+}

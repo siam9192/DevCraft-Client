@@ -20,7 +20,7 @@ const Login = () => {
 
         login(email,password)
         .then(async res =>{
-        await  AxiosBase().post(`/api/v1/isFired/`,{email})
+        await  AxiosBase().post(`/api/v1/isFired`,{email})
           .then(res =>{
               if(res.data.isFired){
                   logout();

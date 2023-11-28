@@ -9,16 +9,13 @@ import Dashboardbar from '../../Components/Dashboardbar';
 const PaymentHistory = () => {
   //  const [paymentHistories,setPaymentHistories] = useState([]);
    const {history} = QueryPaymentHistory()
-  //  useEffect (()=>{
-  //   const {history} = historyHook;
-  //   setPaymentHistories(history)
-  //  },[])
+  
    
     return (
         <div className='py-5 space-y-5 '>
       <Dashboardbar pathName={'Payment history'} barText={'Payments'}></Dashboardbar>
         <div className='w-full  py-6 px-3 shadow-md rounded-md bg-white'>
-            <h1 className='text-2xl text-black font- font-semibold '>{history?.length} People found</h1>
+            <h1 className='text-2xl text-black font- font-semibold '>{history?.length} history found</h1>
         </div>
         <div className="overflow-x-auto shadow-lg bg-white rounded-md">
   <table className="table">

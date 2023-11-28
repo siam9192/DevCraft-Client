@@ -3,6 +3,7 @@ import React, { useEffect, useState } from 'react';
 import AxiosSecure from '../../Hooks/Axios/AxiosSecure';
 import useAuth from '../../Hooks/UserAuth/UseAuth';
 import toast, { Toaster } from 'react-hot-toast';
+import Swal from 'sweetalert2';
 const PaymentForm = ({paymentDetails}) => {
 const [clientSecret,setClientSecret]  = useState('');
 const [paymentError,setPaymentError] = useState('');
@@ -87,13 +88,22 @@ card
   }
   useAxiosSecure.post('/api/v1/employee/payment',payment)
   .then(res => {
+    if(res.data === 'found'){
+      toast.error('Salary already paid of this month!');
+      setToggle(!toggle)
+    setProcessing(false)
+      return;
+    }
  if(res.data.insertedId){
   setProcessing(false)
   setToggle(!toggle)
   document.getElementById('my_modal_1').close()
   form.reset()
-  toast.success('Payment successful!');
-
+  Swal.fire({
+    title: "Good job!",
+    text: "Payment successful!",
+    icon: "success"
+  });
  }
   })
  }

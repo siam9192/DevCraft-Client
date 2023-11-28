@@ -4,12 +4,11 @@ import UseAuth from "../UserAuth/UseAuth";
 
 const AxiosSecure = () => {
   const {logout} =UseAuth();
-  console.log('tor nanir khaligor')
     const instance = axios.create({
         baseURL:"http://localhost:8000"
      })
 console.log(1111)
-     instance.intercepmetors.request.use(function(config){
+     instance.interceptors.request.use(function(config){
    const token = localStorage.getItem('access-token');
    config.headers.authorization = `Access-token ${token}`
    return config;

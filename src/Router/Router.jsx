@@ -15,6 +15,7 @@ import PrivateRoutes from "../Components/PrivateRoute/PrivateRoute";
 import AdminRoutes from "../Components/AdminRoutes/AdminRoutes";
 import HrRoutes from "../Components/HrRoutes/HrRoutes";
 import EmployeeRoutes from "../Components/EmployeeRoutes/EmployeeRoutes";
+import Contact from "../Pages/Contact/Contact";
 const router = createBrowserRouter([
     {
         path:'/',
@@ -23,6 +24,10 @@ const router = createBrowserRouter([
             {
                 path:'/',
                 element:<Home></Home>
+            },
+            {
+                path:'/contact',
+                element: <Contact></Contact>
             },
             {
                 path:'/signup',

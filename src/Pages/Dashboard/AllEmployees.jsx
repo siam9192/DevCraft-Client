@@ -5,7 +5,7 @@ import UseAuth from '../../Hooks/UserAuth/UseAuth';
 import CheckUser from '../../Hooks/CheckUser/CheckUser';
 import AxiosSecure from '../../Hooks/Axios/AxiosSecure';
 import Dashboardbar from '../../Components/Dashboardbar';
-
+import Swal from 'sweetalert2';
 const AllEmployees = () => {
     const {users,refetch} = QueryUsersAdmin();
     const [admin,setAdmin] = useState([]);
@@ -30,13 +30,35 @@ const changeRole = (id,role)=>{
     }
   })
   }
-  const fireEmployee = (email)=>{
-    useAxiosSecure.patch(`/api/v1/fire-employee/${email}`)
-    .then(res => {
-      if(res.data.modifiedCount > 0){
-        refetch();
-        }
-    })
+  const fireEmployee = (email,isFired)=>{
+if(isFired){
+  return
+}
+    Swal.fire({
+      title: "Are you sure?",
+      icon: "warning",
+      showCancelButton: true,
+      confirmButtonColor: "#3085d6",
+      cancelButtonColor: "#d33",
+      confirmButtonText: "Yes, delete it!"
+    }).then((result) => {
+      if (result.isConfirmed) {
+        useAxiosSecure.patch(`/api/v1/fire-employee/${email}`)
+        .then(res => {
+          if(res.data.modifiedCount > 0){
+            refetch();
+            Swal.fire({
+              title: "Fired!",
+              text: "The employee has been fired.",
+              icon: "success"
+            });
+            
+            }
+        })
+       
+      }
+    });
+   
   }
     if(isUserChecking){
       return <div className='flex justify-center items-center  min-h-[100vh] w-full'><span class="loading loading-infinity loading-lg text-blue-600 text-center text-9xl"></span></div>

@@ -12,7 +12,7 @@ import Charts from '../../../EmployeeDetails/Charts';
 import DashboardChart from '../../DashboardChart';
 
 
-const AdminDashboard = () => {
+const HrDashboard = () => {
     const {user} = UseAuth();
     const useAxiosSecure = AxiosSecure();
     const today = new Date();
@@ -25,7 +25,7 @@ const AdminDashboard = () => {
      const monthName = month[today.getMonth()];
      const year = today.getFullYear();
   useEffect(()=>{
-     useAxiosSecure.get('/api/v1/dashboard/admin')
+     useAxiosSecure.get('/api/v1/dashboard/hr')
      .then(res => setDashboardData(res.data))
      
   },[])
@@ -56,7 +56,7 @@ const AdminDashboard = () => {
             </div>
             <div className='p-8 bg-amber-400 flex items-center justify-between rounded-lg'>
                 <div>
-                    <h1 className='text-white text-2xl font-semibold'>Worksheets</h1>
+                    <h1 className='text-white text-2xl font-semibold'> Worksheets</h1>
                     <h1 className='text-white text-2xl font-semibold'>{dashboardData.worksheets}</h1>
                 </div>
           <div className='text-black text-4xl px-4 py-3 bg-white rounded-md'>
@@ -99,21 +99,23 @@ const AdminDashboard = () => {
             </div>
             <div className='bg-white rounded-md shadow-lg  '>
                <div className="py-2 border-b-2 px-3">
-               <h1 className='text-2xl text-black font-pop'>Recent payment</h1>
+               <h1 className='text-2xl text-black font-pop'>Admin and Hr</h1>
                </div>
-  <div className='p-4'>
-  {
-    dashboardData.recentPayment?.map((payment,index)=>{
-      return <div className='flex items-center justify-between  text-2xl text-black' key={index}>
-      <h2>{payment.employee_name}</h2><h2>${payment.amount}</h2>
-      </div>
-    })
+  <div className='p-4 space-y-2'>
+    {/* <h2 className='text-3xl text-black'>Admin</h2> */}
+    <div className='flex items-center gap-2'><img src={dashboardData.roles?.admin.image} alt="" className='w-10 h-10 rounded-full' /><h2 className='text-black'>
+    {dashboardData.roles?.admin.name}</h2> ({dashboardData.roles?.admin.role})</div>
+    {
+  dashboardData.roles?.hr.map((item,index)=>{
+  return <div key={index} className='flex items-center gap-2'><img src={dashboardData.roles?.admin.image} alt="" className='w-10 h-10 rounded-full' /><h2 className='text-black'>
+    {item.name}</h2> ({item.role})</div>
+  })
   }
   </div>
-            </div>
+ </div>
         </div>
         </div>
     );
 }
 
-export default AdminDashboard;
+export default HrDashboard;

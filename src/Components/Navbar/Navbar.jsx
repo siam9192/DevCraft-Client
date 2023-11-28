@@ -19,7 +19,7 @@ const Navbar = () => {
         </div>
         <nav className='lg:flex justify-between items-center gap-5 text-xl text-black lg:block hidden '>
         <NavLink
-  to="/messages"
+  to="/"
   className={({ isActive, isPending }) =>
     isPending ? "pending" : isActive ? "active" : ""
   }
@@ -34,16 +34,9 @@ const Navbar = () => {
  >
 Dashboard
 </NavLink>
+
 <NavLink
-  to="/messages"
-  className={({ isActive, isPending }) =>
-    isPending ? "pending" : isActive ? "active" : ""
-  }
->
-    About us
-</NavLink>
-<NavLink
-  to="/messages"
+  to="/contact"
   className={({ isActive, isPending }) =>
     isPending ? "pending" : isActive ? "active" : ""
   }

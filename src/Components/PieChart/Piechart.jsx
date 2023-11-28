@@ -69,8 +69,9 @@ const Piechart = ({salaries}) => {
 
   ]
     return (
-      <ResponsiveContainer width="100%" height={250}>
-      <PieChart>
+   <div>
+       <ResponsiveContainer width="100%" height={190}>
+      <PieChart width={"100%"}>
         <Pie
           data={data}
           dataKey="salary"
@@ -81,14 +82,26 @@ const Piechart = ({salaries}) => {
           outerRadius={80}
           fill="#8884d8"
           paddingAngle={5}
-        />
+        >
         {data.map((entry, index) => (
             <Cell key={`cell-${index}`} fill={COLORS[index % COLORS.length]} />
           ))}
+          </Pie>
         <Tooltip />
         
       </PieChart>
     </ResponsiveContainer>
+    <div className='flex flex-wrap items-center gap-3'>
+     {
+      COLORS.map((color,index)=>{
+        return<div className='' key={index}>
+        <div className='w-10 h-10' style={{backgroundColor: color}} ></div>
+        <h2>{data[index].month.slice(0,3)}</h2>
+</div>
+      })
+     }
+    </div>
+   </div>
     );
 }
 

@@ -20,10 +20,15 @@ const AuthProvider = ({children}) => {
         return signOut(auth);
     }
     useEffect(()=>{
+        
 const observer = onAuthStateChanged(auth,currentUser =>{
+    console.log('way')
     if(currentUser){
-      AxiosBase().post(`/api/v1/isFired/`,{email:currentUser.email})
+      console.log('tru user')
+      AxiosBase().post(`/api/v1/isFired`,{email:currentUser.email})
       .then(res => {
+console.log('')
+        console.log('fetching')
         if(res.data.isFired){
             logout();
             setLoading(false)

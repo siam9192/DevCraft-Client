@@ -6,7 +6,7 @@ const Banner = () => {
           <Container>
           <div className='grid grid-cols-1 md:grid-cols-2 '>
           <div className='py-20 '>
-          <h1 className='text-7xl text-white font-oswlad space-y-3'>"Elevate Your Workforce <span className='text-[#ffcc00]'>Experience </span> <br /> with Our <span className='text-[#002db3]'>Employee</span> Management Platform"</h1>
+          <h1 className='md:text-7xl text-5xl text-white font-oswlad space-y-3'>"Elevate Your Workforce <span className='text-[#ffcc00]'>Experience </span> <br /> with Our <span className='text-[#002db3]'>Employee</span> Management Platform"</h1>
           </div>
           <div>
 
