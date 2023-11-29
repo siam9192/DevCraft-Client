@@ -5,7 +5,25 @@ const About = () => {
         <div className='grid md:grid-cols-2 font-inter pb-5 '>
           <div className='bg-yellow-500 p-5 space-y-4'>
             <h1 className='text-3xl text-black font-semibold'>About us</h1>
-            <p className='text-black'>Welcome to [Your Company Name] – your partner in redefining employee management. We are driven by a passion for simplifying HR processes and enhancing the employee experience. Our cutting-edge technology, user-centric design, and  unwavering commitment to security and compliance make us a trusted choice for businesses looking to optimize their workforce. [Your Company Name] is a dedicated team of HR and tech professionals, committed to making a positive impact on how businesses operate. Connect with us for transparent communication and support as we shape the future of work together.</p>
+            <p className='text-black'>At DevCraft Solutions, we're not just building software; we're crafting solutions for the future. Since 2014, we've been at the forefront of innovation, creating custom software, mobile apps, and web solutions that redefine possibilities.
+
+Why DevCraft Solutions?
+
+    Innovative Solutions: We're driven by a passion for innovation, exploring the latest technologies to deliver cutting-edge solutions.
+
+    Customer Focus: Your success is our priority. We work closely with clients to understand their unique needs and provide tailored, quality-driven results.
+
+Our Expertise
+
+    Custom Software Development: Precision-crafted solutions to meet your business needs.
+
+    Mobile App Development: Engaging and intuitive apps for iOS and Android.
+
+    Web Development: Robust, scalable web solutions for lasting impact.
+
+Join the Digital Revolution
+
+Whether you're a startup with big dreams or an established enterprise seeking digital transformation,DevCraft Solutions is your strategic technology partner. Let's build something extraordinary together.</p>
           </div>
           <div>
             <img src="/banner/banner3.jpg" alt="" />

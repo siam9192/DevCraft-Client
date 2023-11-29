@@ -7,6 +7,7 @@ import UseAuth from "../../Hooks/UserAuth/UseAuth";
 import QueryWorksheet from "../../Hooks/Tanstack/QueryWorksheet";
 import Dashboardbar from "../../Components/Dashboardbar";
 import toast, { Toaster } from "react-hot-toast";
+import { Helmet } from "react-helmet";
 const WorkSheet = () => {
     const [startDate, setStartDate] = useState(new Date())
     const useAxiosSecure = AxiosSecure();
@@ -32,18 +33,23 @@ const WorkSheet = () => {
  useAxiosSecure.post('/api/v1/worksheet/add',workSheet)
  .then(res => {
    if(res.data.insertedId){
+    form.reset()
     worksheetsRefetch();
+
     toast.success('Successfully added!')
    }
  })
   }
 
     return (
-       <div className='py-5 space-y-5 h-[calc(100vh-100px)]'>
+       <div className='py-5 space-y-3 lg:h-[calc(100vh-100px)] '>
+            <Helmet>
+            <title>DevCraft||DASHBOARD||WORKSHEETS</title>
+          </Helmet>
          <Dashboardbar pathName={'Worksheets'} barText={'Worksheets'}></Dashboardbar>
-            <form action="" className="w-full py-3 px-3 space-y-2 shadow-md bg-white" onSubmit={submitTask}>
+            <form action="" className="w-full py-3 px-3 space-y-2 shadow-md bg-white rounded-lg" onSubmit={submitTask}>
 
-          <div className=" grid md:grid-cols-4 grid-cols-2 gap-3  rounded-md">
+          <div className=" grid md:grid-cols-4 grid-cols-2 gap-3  rounded-lg">
            <div className="flex-1">
             <h3 className="py-1">Tasks</h3>
             <select name="task" id="" className="w-full py-2 px-2">
@@ -67,7 +73,7 @@ const WorkSheet = () => {
            </div>
           </div>
           </form>
-         <div className="bg-white shadow-lg w-full max-h-[350px] overflow-scroll  py-2 px-3 ">
+         <div className="bg-white shadow-lg w-full max-h-[350px] overflow-scroll rounded-lg  py-2 px-3 ">
             <div className="grid grid-cols-3 p-5 border-b-2">
             <div>
                 <h1 className="text-xl text-black">Task</h1>

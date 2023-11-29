@@ -37,7 +37,7 @@ const HrDashboard = () => {
        <div className='w-full py-5 px-2 bg-green-300 flex justify-between items-center rounded-md'>
        <div className='flex items-center gap-3'>
         <img src={user?.photoURL} alt="" className='w-14 h-14 rounded-full'/>
-        <h1 className='text-black text-2xl'>Welcome {user.displayName.split(' ')[0]}</h1>
+        <h1 className='text-black text-2xl'>Welcome {user.displayName.split(' ')[0]} (hr)</h1>
        </div>
        <div>
         <h1 className='text-black text-xl'>{dayName},{today.getMonth()} {monthName} {year}</h1>

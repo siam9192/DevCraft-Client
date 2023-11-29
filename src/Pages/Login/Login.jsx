@@ -3,6 +3,7 @@ import { Link, useLocation, useNavigate } from 'react-router-dom';
 import Container from '../../Components/Reuse/Container/Container';
 import UseAuth from '../../Hooks/UserAuth/UseAuth';
 import AxiosBase from '../../Hooks/Axios/AxiosBase';
+import { Helmet } from 'react-helmet';
 const Login = () => {
     const [error,setError] = useState('');
     const [loading,setLoading] = useState(false);
@@ -50,6 +51,9 @@ const Login = () => {
 
     return (
         <div className='bg-gray-200 min-h-[100vh]'>
+          <Helmet>
+            <title>DevCraft||Login</title>
+          </Helmet>
         <Container>
             <div className='md:flex flex-col justify-center items-center py-20 space-y-4 font-inter md:px-0 px-2'>
             <div className='flex flex-col justify-center items-center'>

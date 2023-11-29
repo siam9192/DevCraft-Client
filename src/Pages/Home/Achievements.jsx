@@ -7,7 +7,7 @@ const Achievements = () => {
     return (
         <div>
             <h1 className='text-4xl text-white font-semibold text-center font-inter'>Consulting success</h1>
-            <p className='text-white text-center font-semibold'>Lorem ipsum dolor sit amet consectetur adipisicing elit. Eaque et nostrum mollitia, <br /> expedita perferendis assumenda molestiae natus dignissimos alias voluptatum.</p>
+            <p className='text-white text-center font-semibold'>As a seasoned consultant, I bring a track record of delivering strategic <br /> insights and actionable solutions to clients across diverse industries. My success in consulting is built upon a foundation of:</p>
             <div className='grid md:grid-cols-2 gap-5 md:px-32 px-10 py-5'>
                  <div className='p-6 bg-yellow-400 flex  justify-center items-center rounded-lg'>
                     <div className='text-white'>
@@ -27,14 +27,14 @@ const Achievements = () => {
                     <div className='text-white text-center'>
                         <RiTeamFill className='text-8xl'></RiTeamFill>
                         <h1 className='text-4xl font-semibold'>Our team</h1>
-                        <h1 className='text-4xl font-semibold'>54</h1>
+                        <h1 className='text-4xl text-center font-semibold'>54</h1>
                     </div>
                  </div>
                  <div className='p-6 bg-yellow-400 flex  justify-center items-center rounded-lg'>
                     <div className='text-white text-center'>
                         <FaAward className='text-8xl'></FaAward>
                         <h1 className='text-4xl font-semibold'>Awards</h1>
-                        <h1 className='text-4xl font-semibold'>30</h1>
+                        <h1 className='text-4xl font-semibold text-center'>30</h1>
                     </div>
                  </div>
                  <div>

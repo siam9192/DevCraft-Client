@@ -8,6 +8,7 @@ import AxiosBase from '../../Hooks/Axios/AxiosBase';
 import UseAuth from '../../Hooks/UserAuth/UseAuth';
 import { updateProfile } from 'firebase/auth';
 import auth from '../../Firebase/Firebase.config';
+import { Helmet } from 'react-helmet';
 const SignUp = () => {
    const [error,setError] = useState('');
    const [loading,setLoading] = useState(false);
@@ -102,6 +103,9 @@ if(result.insertedId){
 }
     return (
         <div className='bg-gray-200 min-h-[100vh]'>
+                <Helmet>
+            <title>DevCraft||SIGNUP</title>
+          </Helmet>
             <Container>
                 <div className='md:flex flex-col justify-center items-center py-2 space-y-4 font-inter'>
                 <div className='flex flex-col justify-center items-center'>

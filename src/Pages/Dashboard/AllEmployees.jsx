@@ -6,6 +6,7 @@ import CheckUser from '../../Hooks/CheckUser/CheckUser';
 import AxiosSecure from '../../Hooks/Axios/AxiosSecure';
 import Dashboardbar from '../../Components/Dashboardbar';
 import Swal from 'sweetalert2';
+import { Helmet } from 'react-helmet';
 const AllEmployees = () => {
     const {users,refetch} = QueryUsersAdmin();
     const [admin,setAdmin] = useState([]);
@@ -61,38 +62,37 @@ if(isFired){
    
   }
     if(isUserChecking){
-      return <div className='flex justify-center items-center  min-h-[100vh] w-full'><span class="loading loading-infinity loading-lg text-blue-600 text-center text-9xl"></span></div>
+      return <div className='flex justify-center items-center  lg:h-[calc(100vh-100px)] w-full'><span class="loading loading-infinity loading-lg text-blue-600 text-center text-9xl"></span></div>
      }
     return (
-        <div className='py-5 space-y-5 '>
+        <div className='py-5 space-y-3 '>
+              <Helmet>
+            <title>DevCraft||Dashboard||ALL-EMPLOYEES</title>
+          </Helmet>
           <Dashboardbar pathName={'All Employee'} barText={'Employees'}></Dashboardbar>
-        <div className='w-full  py-6 px-3 shadow-md rounded-md bg-white '>
+        <div className='w-full  py-4 px-3 shadow-md rounded-md bg-white '>
             <h1 className='text-2xl text-black font- font-semibold '>{employees.length} Employees found</h1>
         </div>
-      <div className='bg-white  overflow-x-auto p-5 rounded-md'>
+      <div className='bg-white  overflow-x-auto max-h-[400px]   overflow-scroll-y p-5 rounded-md'>
       <div className='grid grid-cols-5 font-semibold'>
-            <div><h1 className="text-xl text-black">Name</h1></div>
-            <div><h1 className="text-xl text-black">Designation</h1></div>
-            <div><h1 className="text-xl text-black">Make HR</h1></div>
-            <div><h1 className="text-xl text-black">Action</h1></div>
-            <div><h1 className="text-xl text-black">Role</h1></div>
-            {/* <div><button className='w-full border-2 border-amber-500 py-2'>Make HR</button></div>
-            <div><button className='w-full border-2 border-amber-500 py-2'>Fired</button></div> */}
-             
+            <div><h1 className="l text-black">Name</h1></div>
+            <div><h1 className="l text-black">Designation</h1></div>
+            <div><h1 className="l text-black">Make HR</h1></div>
+            <div><h1 className="l text-black">Action</h1></div>
+            <div><h1 className="l text-black">Role</h1></div>
+          
         </div>
         <div className="flex flex-col ">
         
         {
           employees?.map((item,index)=>{
-                return    <div className='grid grid-cols-5 border-t-2 py-4 px-2' key={index}>
-                <div><h1 className="text-xl text-black">{item.name}</h1></div>
-                <div><h1 className="text-xl text-black">{item.designation}</h1></div>
+                return    <div className='grid grid-cols-5 border-t-2 py-2 px-2' key={index}>
+                <div><h1 className="l text-black">{item.name}</h1></div>
+                <div><h1 className="l text-black">{item.designation}</h1></div>
                 <div>{item.role !== 'hr'? <button className='w-1/2 bg-primary text-white py-2' onClick={()=> changeRole(item._id ,'hr')}>Make HR</button> :<button className='w-1/2 bg-black text-white py-2' onClick={()=> changeRole(item._id,'employee')}>Make EMPLOYEE</button>}</div>
                 <div>{!item.isFired ? <button className='w-1/2 bg-red-500 text-white py-2' onClick={()=> fireEmployee(item.email)}>Fire</button>:<button className='w-1/2 bg-red-500 text-white py-2' onClick={()=> fireEmployee(item.email)}>Fired</button> }</div>
-                <div><h1 className="text-xl text-black">{item.role}</h1></div>
-                {/* <div><button className='w-full border-2 border-amber-500 py-2'>Make HR</button></div>
-                <div><button className='w-full border-2 border-amber-500 py-2'>Fired</button></div> */}
-                 
+                <div><h1 className="l text-black">{item.role}</h1></div>
+
             </div>
             })
          }

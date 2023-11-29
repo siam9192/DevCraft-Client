@@ -3,13 +3,18 @@ import Container from '../../Components/Reuse/Container/Container';
 import { IoIosCall } from "react-icons/io";
 import { FaLocationArrow } from "react-icons/fa";
 import { IoIosTime } from "react-icons/io";
+import { IoIosMail } from "react-icons/io";
 import './contact.css'
+import { Helmet } from 'react-helmet';
 const Contact = () => {
     return (
-        <div className='min-h-[calc(100vh-100px)]  contact'>
+        <div className='min-h-[calc(100vh-100px)] bg-black '>
+                <Helmet>
+            <title>DevCraft||Contact</title>
+          </Helmet>
            <Container>
            <div className='grid lg:grid-cols-2 grid-cols1 py-10'>
-                <div className='font-owslad space-y-5'>
+                {/* <div className='font-owslad space-y-5'>
            <h1 className='text-6xl text-white '>Contact us</h1>
           <div className='py-10'>
           <div className='flex items-center gap-2'>
@@ -39,6 +44,29 @@ const Contact = () => {
            
           </div>
 
+                </div> */}
+                <div className='space-y-4 p-10 font-pop'>
+                    <h1 className='text-5xl text-white font-mono text-center'>Contact us</h1>
+                    <div className='space-y-3'>
+                     <div className='w-full bg-white p-2 rounded-md flex items-center justify-between'>
+                        <div className='p-2 bg-black rounded-md  w-10 h-10 text-center'>
+                            <IoIosCall className='text-xl text-yellow-500'></IoIosCall>
+                        </div>
+                        <h2 className='text-2xl text-black'>+9938094970</h2>
+                     </div>
+                     <div className='w-full bg-white p-2 rounded-md flex items-center justify-between'>
+                        <div className='p-2 bg-black rounded-md  w-10 h-10 text-center'>
+                            <IoIosMail className='text-xl text-yellow-500'></IoIosMail>
+                        </div>
+                        <h2 className='text-2xl text-black'>devcraft@gmail.com</h2>
+                     </div>
+                     <div className='w-full bg-white p-2 rounded-md flex items-center justify-between gap-2'>
+                        <div className='p-2 bg-black rounded-md  w-10 h-10 text-center'>
+                            <FaLocationArrow className='text-xl text-yellow-500'></FaLocationArrow>
+                        </div>
+                        <h2 className='text-xl text-black'>42 Innovation Lane, Techborough, EN1 2AB, England</h2>
+                     </div>
+                    </div>
                 </div>
                 <div>
                 <div className='space-y-4 p-10'>

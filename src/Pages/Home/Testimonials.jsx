@@ -47,7 +47,7 @@ useState(()=>{
         reviews?.map((review,index)=>{
 
         return <SwiperSlide key={index}>
-           <div className='p-5 rounded-lg bg-white text-black font-pop shadow-md'>
+           <div className='p-5 rounded-lg bg-white text-black font-pop shadow-md h-[400px]'>
          <img src={review.photo} alt="" className='w-20 h-20 rounded-full' />
          <h2 className='text-2xl text-black font-semibold py-2'>{review.client_name} - <span className='text-[20px] text-blue-600'>{review.profession}</span></h2>
          <Rating initialRating={review.rating} readonly  emptySymbol={<AiOutlineStar className='text-xl text-amber-400'></AiOutlineStar>}

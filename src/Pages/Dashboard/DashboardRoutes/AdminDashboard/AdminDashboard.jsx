@@ -37,7 +37,7 @@ const AdminDashboard = () => {
        <div className='w-full py-5 px-2 bg-green-300 flex justify-between items-center rounded-md'>
        <div className='flex items-center gap-3'>
         <img src={user?.photoURL} alt="" className='w-14 h-14 rounded-full'/>
-        <h1 className='text-black text-2xl'>Welcome {user.displayName.split(' ')[0]}</h1>
+        <h1 className='text-black text-2xl'>Welcome {user.displayName.split(' ')[0]} (admin)</h1>
        </div>
        <div>
         <h1 className='text-black text-xl'>{dayName},{today.getMonth()} {monthName} {year}</h1>
@@ -86,7 +86,7 @@ const AdminDashboard = () => {
         <div className='grid md:grid-cols-2  gap-5 '>
             <div className='bg-white rounded-md shadow-lg  '>
                <div className="py-2 border-b-2 px-3">
-               <h1 className='text-2xl text-black font-pop text-capital'>Total Salary By Unit</h1>
+               <h1 className='text-2xl text-black font-pop text-capital'>Paid salary chart</h1>
                </div>
   <div className='p-4'>
   {
@@ -102,9 +102,13 @@ const AdminDashboard = () => {
                <h1 className='text-2xl text-black font-pop'>Recent payment</h1>
                </div>
   <div className='p-4'>
+  <div className='flex items-center justify-between  text-xl text-black' >
+      <h2>Name</h2><h2>Amount</h2>
+      </div>
   {
     dashboardData.recentPayment?.map((payment,index)=>{
-      return <div className='flex items-center justify-between  text-2xl text-black' key={index}>
+      
+      return <div className='flex items-center justify-between  text-x text-black' key={index}>
       <h2>{payment.employee_name}</h2><h2>${payment.amount}</h2>
       </div>
     })

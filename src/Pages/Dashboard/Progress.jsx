@@ -4,6 +4,7 @@ import { MdDashboard } from 'react-icons/md';
 import AxiosSecure from '../../Hooks/Axios/AxiosSecure';
 import QueryUsers from '../../Hooks/Tanstack/QueryUsers';
 import Dashboardbar from '../../Components/Dashboardbar';
+import { Helmet } from 'react-helmet';
 
 const Progress = () => {
     const useAxiosSecure = AxiosSecure();
@@ -34,7 +35,9 @@ const Progress = () => {
   },[name])
     return (
         <div className='py-5 space-y-5 px-3 h-full'>
-       
+           <Helmet>
+            <title>DevCraft||DASHBOARD||PROGRESS</title>
+          </Helmet>
            <Dashboardbar pathName={'Progress'} barText={'Progress'}></Dashboardbar>
 
         <div>
@@ -42,9 +45,9 @@ const Progress = () => {
         <div className="overflow-x-auto bg-white p-6 rounded-lg min-h-[200px]">
         <div className='w-full  py-6  rounded-md flex justify-between items-center'>
             <h1 className='text-2xl text-black font- font-semibold '>{worksheets?.length} worksheet found</h1>
-            <div className='flex items-center gap-2'>
-                <h1>employee</h1>
-                <select name="" id="" className='w-full py-2  p-2' onChange={(e)=> setName(e.target.value)}>
+            <div className=' items-center gap-2'>
+                <h1>Select employee</h1>
+                <select name="" id="" className='w-full py-2  p-2 border-2' onChange={(e)=> setName(e.target.value)}>
                     <option value="All"  selected>All</option>
                     {
                         employees?.map((employee,index)=>{

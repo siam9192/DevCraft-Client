@@ -6,6 +6,7 @@ import { GiHamburgerMenu } from "react-icons/gi";
 import ResponsiveNavbar from './ResponsiveNavbar';
 import { useState } from 'react';
 import { RxCross1 } from 'react-icons/rx';
+import { SiJirasoftware } from "react-icons/si";
 const Navbar = () => {
   const [toggle,setToggle] = useState(false);
   const {user,logout} = UseAuth();
@@ -13,11 +14,16 @@ const Navbar = () => {
         <div className='w-full bg-primary py-5'>
             <Container>
             <div className='flex justify-between items-center'>
-        <div>
-        <h1 className='text-white text-4xl font-oswlad font-semibold'>Innovexa Software</h1>
-         <p className='text-gray-800 textxl -mt-2 font-inter font-bold'>Employee Management</p>
+        <div className='flex items-center'>
+        <div className='text-5xl text-red-500'>
+          <SiJirasoftware></SiJirasoftware>
         </div>
-        <nav className='lg:flex justify-between items-center gap-5 text-xl text-black lg:block hidden '>
+     <div>
+     <h1 className='text-white text-4xl font-oswlad font-semibold'>DevCraft Solutions</h1>
+         <p className='text-black  -mt-2 font-inter font-bold'>Employee Management</p>
+     </div>
+        </div>
+        <nav className='lg:flex justify-between items-center gap-5 text-xl text-white lg:block hidden '>
         <NavLink
   to="/"
   className={({ isActive, isPending }) =>

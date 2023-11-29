@@ -44,13 +44,13 @@ const {email} = useParams();
                         <h2 className='text-black flex items-center gap-2'>Email : <span>{employee?.email}</span></h2>
                         <h2 className='text-black flex items-center gap-2'>Status : <span>{employee?.isVerified ? 'verified' : 'not verified'}</span></h2>
                         <h2 className='text-black flex items-center gap-2'>Phone : <span>N/A</span></h2>
-                        <h2 className='text-black flex items-center gap-2'>Age : <span>28</span></h2>
+                        <h2 className='text-black flex items-center gap-2'>Age : <span>N/A</span></h2>
                         <h2 className='text-black flex items-center gap-2'>Address : <span>N/A</span></h2>
                         <h2 className='text-black flex items-center gap-2'>Salary(month) : <span>${employee?.salary}</span></h2>
                        </div>
                         </div>
                       </div>
-                      <h1 className='text-2xl text-black  py-2'>{employee.name?.split(' ')[0]}'s salary chart</h1>
+                      <h1 className='text-2xl text-black  py-2'>{employee.name?.split(' ')[0]}'s salary chart (2023)</h1>
                       <Charts salaryHistory = {salaryHistory}></Charts>
     
                </div>
