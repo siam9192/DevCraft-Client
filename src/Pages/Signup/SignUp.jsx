@@ -13,6 +13,7 @@ const SignUp = () => {
    const [error,setError] = useState('');
    const [loading,setLoading] = useState(false);
    const [image,setImage] = useState('');
+   const {user,logout} = UseAuth()
   const {createUser} = UseAuth();
   const useAxiosBase = AxiosBase();
  
@@ -85,6 +86,7 @@ if(!response.data.success){
   updateProfile(auth.currentUser,{
     displayName: name,photoURL:imageUrl
 })
+logout()
  const user = {
 name,image:imageUrl,role,email,designation,salary,bankAccount,isVerified: false,isFired:false
  }
