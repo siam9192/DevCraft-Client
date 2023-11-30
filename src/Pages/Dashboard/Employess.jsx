@@ -83,17 +83,13 @@ const handleCurrentPage = (page)=>{
             <div className={`${view === 'card' ? 'text-pink-600' : 'text-white'}`} onClick={()=> setView('card')}><FaAddressCard></FaAddressCard></div>
           </div>
          </div>
-
-
-
          {
           view === 'table' ?  <TableView data = {data} openModal = {openModal} handelVerified = {handelVerified} currentPage = {currentPage} setCurrentPage = {handleCurrentPage} pages = {pages} prev = {prev} next = {next} closeModal = {closeModal}></TableView> : <CardView  data = {data} openModal = {openModal} handelVerified = {handelVerified} currentPage = {currentPage} setCurrentPage = {handleCurrentPage} pages = {pages} prev = {prev} next = {next} closeModal = {closeModal}></CardView>
          }
 
 
 
-{/* Open the modal using document.getElementById('ID').showModal() method */}
-{/* <button className="btn" >open modal</button> */}
+
 <dialog id="my_modal_1" className="modal">
 <div className="modal-box relative">
 <div className='absolute top-2 right-2 text-black text-xl' onClick={closeModal}>
