@@ -8,7 +8,7 @@ import './contact.css'
 import { Helmet } from 'react-helmet';
 const Contact = () => {
     return (
-        <div className='min-h-[calc(100vh-100px)] bg-black '>
+        <div className='min-h-[calc(100vh-100px)] bg-black overflow-hidden '>
                 <Helmet>
             <title>DevCraft||Contact</title>
           </Helmet>
@@ -46,19 +46,19 @@ const Contact = () => {
 
                 </div> */}
                 <div className='space-y-4 p-10 font-pop'>
-                    <h1 className='text-5xl text-white font-mono text-center'>Contact us</h1>
+                    <h1 className='text-6xl text-white font-mono text-center'>Contact us</h1>
                     <div className='space-y-3'>
                      <div className='w-full bg-white p-2 rounded-md flex items-center justify-between'>
                         <div className='p-2 bg-black rounded-md  w-10 h-10 text-center'>
                             <IoIosCall className='text-xl text-yellow-500'></IoIosCall>
                         </div>
-                        <h2 className='text-2xl text-black'>+9938094970</h2>
+                        <h2 className='text-xl text-black'>+9938094970</h2>
                      </div>
                      <div className='w-full bg-white p-2 rounded-md flex items-center justify-between'>
                         <div className='p-2 bg-black rounded-md  w-10 h-10 text-center'>
                             <IoIosMail className='text-xl text-yellow-500'></IoIosMail>
                         </div>
-                        <h2 className='text-2xl text-black'>devcraft@gmail.com</h2>
+                        <h2 className='text-xl text-black'>devcraft@gmail.com</h2>
                      </div>
                      <div className='w-full bg-white p-2 rounded-md flex items-center justify-between gap-2'>
                         <div className='p-2 bg-black rounded-md  w-10 h-10 text-center'>

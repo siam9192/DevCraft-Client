@@ -22,7 +22,7 @@ const PaymentHistory = () => {
   }
   setPages([...array])
   },[currentPage,history])
-   const prev = ()=>{
+  const prev = ()=>{
     const count = currentPage-1;
     if(count > 0){
       setCurrentPage(count)
@@ -46,7 +46,9 @@ const PaymentHistory = () => {
         <div className='w-full  py-6 px-3 shadow-md rounded-md bg-white'>
             <h1 className='text-2xl text-black font- font-semibold '>{history?.length} payment history found</h1>
         </div>
-        <div className="overflow-x-auto shadow-lg bg-white rounded-md">
+        <div className="overflow-x-auto shadow-lg bg-white rounded-md ">
+          
+  <div className='min-h-[350px]'>
   <table className="table">
     {/* head */}
     <thead className='text-black '>
@@ -74,15 +76,16 @@ const PaymentHistory = () => {
      
     
   </table>
+  </div>
   <div className='flex justify-center items-center'>
-<div className='flex items-center gap-2 text-black'>
-<button onClick={prev}>Prev</button>
+<div className='flex items-center gap-2 text-xl font-semibold text-black'>
+{pages.length > 0 && <button onClick={prev}>Prev</button>}
 {
 pages?.map((page,index)=>{
 return <button key={index} className={`${currentPage === page ? 'text-red-500' : ''}`} onClick={()=> setCurrentPage(page)}>{page}</button>
 })
 }
-<button onClick={next} >Next</button>
+{pages.length > 0 && <button onClick={next} >Next</button>}
 </div>
 
 </div>

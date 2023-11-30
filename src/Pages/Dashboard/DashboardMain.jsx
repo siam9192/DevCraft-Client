@@ -7,6 +7,7 @@ import HrDashboard from './DashboardRoutes/HrDashboard/HrDashboard';
 
 const DashboardMain = () => {
     const {checkUser} =CheckUser()
+    console.log(checkUser)
     return (
        <>
        {

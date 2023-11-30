@@ -7,6 +7,7 @@ import ResponsiveNavbar from './ResponsiveNavbar';
 import { useState } from 'react';
 import { RxCross1 } from 'react-icons/rx';
 import { SiJirasoftware } from "react-icons/si";
+import { Link } from 'react-router-dom';
 const Navbar = () => {
   const [toggle,setToggle] = useState(false);
   const {user,logout} = UseAuth();
@@ -20,7 +21,7 @@ const Navbar = () => {
         </div>
      <div>
      <h1 className='text-white text-4xl font-oswlad font-semibold'>DevCraft Solutions</h1>
-         <p className='text-black  -mt-2 font-inter font-bold'>Employee Management</p>
+         {/* <p className='text-black  -mt-2 font-inter font-bold'>Employee Management</p> */}
      </div>
         </div>
         <nav className='lg:flex justify-between items-center gap-5 text-xl text-white lg:block hidden '>
@@ -68,11 +69,11 @@ Dashboard
   </label>
   <ul tabIndex={0} className="mt-3 z-[1] p-2 shadow menu menu-sm dropdown-content bg-base-100 rounded-box w-52">
     <li>
-      <a className="justify-between">
+      <a className="justify-between text-black">
         {user?.displayName} 
       </a>
     </li>
-    <li><a>Dashboard</a></li>
+    <li ><Link to='/dashboard' className='text-black'>Dashboard</Link></li>
     <li className='text-red-500' onClick={()=> logout()}><a>Logout</a></li>
   </ul>
 </div>

@@ -5,8 +5,9 @@ import { GiProgression } from "react-icons/gi";
 import { MdPayment } from "react-icons/md";
 import { GrHistory } from "react-icons/gr";
 import { GrWorkshop } from "react-icons/gr";
-import { NavLink } from 'react-router-dom';
+import { NavLink, useLocation } from 'react-router-dom';
 const Hr = () => {
+  const {pathname} = useLocation();
     return (
      <>
              <div className='flex flex-col space-y-5'>

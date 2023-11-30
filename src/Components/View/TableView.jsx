@@ -45,7 +45,7 @@ const TableView = ({data,openModal,handelVerified,currentPage,setCurrentPage,pag
   <td>{user.email}</td>
   <td> <button  onClick={()=> handelVerified(user._id,user.isVerified)}>{user.isVerified ? <GiCheckMark className='text-green-600 text-xl'></GiCheckMark> :<RxCross2 className='text-red-600 text-xl '></RxCross2>}</button></td>
   <td>{user.bankAccount}</td>
-  <td>BDT {user.salary} </td>
+  <td>$ {user.salary} </td>
   <td><button className='w-full bg-green-600 text-white py-2' onClick={()=> openModal(user)}>pay</button></td>
   <td>
   <Link to = {`/details/${user.email}`}><button className="btn btn-ghost btn-xs bg-blue-800 text-white" >details</button></Link>

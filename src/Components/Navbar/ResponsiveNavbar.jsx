@@ -13,7 +13,7 @@ const ResponsiveNavbar = ({toggle}) => {
             </div>
                }
             <nav className='text-xl text-black flex  flex-col text-center space-y-4'>
-           <NavLink to='/home'>Home</NavLink>
+           <NavLink to='/'>Home</NavLink>
            <NavLink to='/dashboard'>Dashboard</NavLink>
            <NavLink to='/contact'>Contact us</NavLink>
            {

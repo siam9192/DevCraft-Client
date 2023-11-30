@@ -42,17 +42,17 @@ const WorkSheet = () => {
   }
 
     return (
-       <div className='py-5 space-y-3 lg:h-[calc(100vh-100px)] '>
+       <div className='py-5 space-y-3 min-h-[100vh] lg:h-[calc(100vh-100px)] '>
             <Helmet>
             <title>DevCraft||DASHBOARD||WORKSHEETS</title>
           </Helmet>
          <Dashboardbar pathName={'Worksheets'} barText={'Worksheets'}></Dashboardbar>
             <form action="" className="w-full py-3 px-3 space-y-2 shadow-md bg-white rounded-lg" onSubmit={submitTask}>
 
-          <div className=" grid md:grid-cols-4 grid-cols-2 gap-3  rounded-lg">
+          <div className=" grid md:grid-cols-4 grid-cols-2 gap-3  rounded-lg ">
            <div className="flex-1">
             <h3 className="py-1">Tasks</h3>
-            <select name="task" id="" className="w-full py-2 px-2">
+            <select name="task" id="" className="w-full py-2 px-2 border-2">
                 <option value="sales">Sales</option>
                 <option value="support">Support</option>
                 <option value="content">Content</option>
@@ -73,7 +73,7 @@ const WorkSheet = () => {
            </div>
           </div>
           </form>
-         <div className="bg-white shadow-lg w-full max-h-[350px] overflow-scroll rounded-lg  py-2 px-3 ">
+         <div className="bg-white shadow-lg w-full h-[300px] md:overflow-y-scroll rounded-lg  py-2 px-3 ">
             <div className="grid grid-cols-3 p-5 border-b-2">
             <div>
                 <h1 className="text-xl text-black">Task</h1>

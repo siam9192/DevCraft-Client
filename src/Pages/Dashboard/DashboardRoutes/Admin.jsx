@@ -19,7 +19,7 @@ const Admin = () => {
        to="/dashboard/all-employee-list"
        className= {`${pathname === '/dashboard/all-employee-list' ? 'text-blue-600': ''}  w-full`}><div className="flex items-center gap-2"><div className='px-2 py-1 bg-[#a2d2ff] rounded'><PiUsersThreeFill></PiUsersThreeFill></div><p>All Employees</p></div>
      </NavLink>
-     {/* <h2>Hr routes</h2>
+      <h2 className='text-red-500'>Hr routes</h2>
       <NavLink
         to="/dashboard/employee-list"
         className= {`${pathname == '/dashboard/employee-list' ? 'text-blue-600': ''} py-2 w-full`}
@@ -30,7 +30,7 @@ const Admin = () => {
         to="/dashboard/progress"
         className= {`${pathname == '/dashboard/progress' ? 'text-blue-600': ''} py-2 w-full`}
       > <div className="flex items-center gap-2"><div className='px-2 py-1 bg-[#a2d2ff] rounded'><GiProgression></GiProgression></div><p>Progress</p></div>
-      </NavLink> */}
+      </NavLink> 
        
      
        </div>

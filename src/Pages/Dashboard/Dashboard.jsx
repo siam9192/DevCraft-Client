@@ -22,7 +22,7 @@ import { AiFillHome } from 'react-icons/ai';
 
 const Dashboard = () => {
   const {checkUser,isUserChecking} = CheckUser();
-  const {user} = UseAuth();
+  const {user,logout} = UseAuth();
   const [toggle,setToggle] =useState(false)
   const {pathName} = useLocation();
   const handleToggle = ()=>{
@@ -53,7 +53,7 @@ const Dashboard = () => {
         {user?.displayName} 
       </a>
     </li>
-    <li><a>Dashboard</a></li>
+    <li><Link to='/dashboard'>Dashboard</Link></li>
    <li> <Link to='/'>Home</Link></li>
     <li className='text-red-500' onClick={()=> logout()}><a>Logout</a></li>
   </ul>
@@ -77,6 +77,8 @@ const Dashboard = () => {
          {
             checkUser === 'admin' && <Admin></Admin>
          }
+         
+         
         <NavLink
         to="/"
         className={({ isActive, isPending }) =>

@@ -7,21 +7,46 @@ import AxiosSecure from '../../Hooks/Axios/AxiosSecure';
 import Dashboardbar from '../../Components/Dashboardbar';
 import Swal from 'sweetalert2';
 import { Helmet } from 'react-helmet';
+import { FaAddressCard, FaTable } from 'react-icons/fa';
+import EmployeesCards from './EmployeesCards';
 const AllEmployees = () => {
-    const {users,refetch} = QueryUsersAdmin();
-    const [admin,setAdmin] = useState([]);
+    // const [admin,setAdmin] = useState([]);
     const [employees,setEmployees] = useState([])
     const {user} = UseAuth();
     const useAxiosSecure = AxiosSecure();
     const {isUserChecking} = CheckUser();
+    const [view,setView] = useState('table')
+    const [pages,setPages] = useState([])
+    const [currentPage,setCurrentPage] = useState(1)
+    const {users,refetch} = QueryUsersAdmin(currentPage);
+   
+
     useEffect(()=>{
- if(user ){
-    const filter = users.filter(item => user?.email === item.email && item.role === 'admin');
-    const filter_2 = users.filter(item => item.email !== user.email);
-    setAdmin(filter)
-    setEmployees(filter_2)
- }
-    },[users,user])
+          console.log(currentPage)
+      refetch()
+      setEmployees(users.result)
+      let array = [];
+      for(let i = 0; i < Math.ceil(users?.employeesCount/5);i++){
+       array.push(i+1)
+      }
+      setPages([...array])
+      },[currentPage,users])
+       const prev = ()=>{
+        const count = currentPage-1;
+        if(count > 0){
+          setCurrentPage(count)
+        }
+      }
+      
+      const next = ()=>{
+        const count = currentPage + 1;
+        
+        if(count <= pages[pages.length-1]){
+          setCurrentPage(count)
+        }
+      }
+    
+       
     // change role
 const changeRole = (id,role)=>{
   useAxiosSecure.patch('/api/v1/admin/change-role',{id,role})
@@ -30,6 +55,9 @@ const changeRole = (id,role)=>{
     refetch();
     }
   })
+  }
+  const handleCurrentPage = (number)=>{
+    setCurrentPage(number)
   }
   const fireEmployee = (email,isFired)=>{
 if(isFired){
@@ -59,21 +87,27 @@ if(isFired){
        
       }
     });
-   
+
   }
     if(isUserChecking){
       return <div className='flex justify-center items-center  lg:h-[calc(100vh-100px)] w-full'><span class="loading loading-infinity loading-lg text-blue-600 text-center text-9xl"></span></div>
      }
     return (
-        <div className='py-5 space-y-3 '>
+        <div className='py-5 space-y-3 min-h-[calc(100vh-100px)]'>
               <Helmet>
             <title>DevCraft||Dashboard||ALL-EMPLOYEES</title>
           </Helmet>
           <Dashboardbar pathName={'All Employee'} barText={'Employees'}></Dashboardbar>
         <div className='w-full  py-4 px-3 shadow-md rounded-md bg-white '>
-            <h1 className='text-2xl text-black font- font-semibold '>{employees.length} Employees found</h1>
+            <h1 className='text-2xl text-black font- font-semibold '>{users?.employeesCount} Employees found</h1>
         </div>
-      <div className='bg-white  overflow-x-auto max-h-[400px]   overflow-scroll-y p-5 rounded-md'>
+        <div className='flex justify-end'>
+          <div className='flex items-center gap-3 text-3xl '>
+            <div className={`${view === 'table' ? 'text-pink-600' : 'text-white'}`}  onClick={()=>setView('table')}><FaTable></FaTable></div>
+            <div className={`${view === 'card' ? 'text-pink-600' : 'text-white'}`} onClick={()=> setView('card')}><FaAddressCard></FaAddressCard></div>
+          </div>
+         </div>
+     { view === 'table'? <div className='bg-white  overflow-x-auto min-h-[300px]   overflow-scroll-y p-5 rounded-md'>
       <div className='grid grid-cols-5 font-semibold'>
             <div><h1 className="l text-black">Name</h1></div>
             <div><h1 className="l text-black">Designation</h1></div>
@@ -97,7 +131,18 @@ if(isFired){
             })
          }
         </div>
-      </div>
+
+      </div>:<EmployeesCards users={users.result} changeRole = {changeRole} ></EmployeesCards>
+}
+      <div className='flex justify-center items-center gap-2 text-xl text-white'>
+<button onClick={prev}>Prev</button>
+{
+pages?.map((page,index)=>{
+return <button key={index} className={`${currentPage === page ? 'text-red-500' : ''}`} onClick={()=> setCurrentPage(page)}>{page}</button>
+})
+}
+<button onClick={next} >Next</button>
+</div>
         </div>
     );
 }

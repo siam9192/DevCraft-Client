@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from 'react';
+import { useEffect,useState } from 'react';
 import { MdDashboard } from 'react-icons/md';
 import { GrWorkshop } from "react-icons/gr";
 import { TbMoneybag } from "react-icons/tb";
@@ -11,27 +11,22 @@ import BiaxaBarchart from '../../../../Components/BiaxaBarChart/BiaxaBarchart';
 import Charts from '../../../EmployeeDetails/Charts';
 import DashboardChart from '../../DashboardChart';
 
-
 const HrDashboard = () => {
     const {user} = UseAuth();
     const useAxiosSecure = AxiosSecure();
     const today = new Date();
     const dayOfWeek = today.getDay();
     const [dashboardData,setDashboardData] = useState({})
-
     const weekdays = ["Sun", "Mon", "Tue", "Wed", "Thu", "Fri", "Sat"];
     const month = ["Jan", "Feb", "Mar", "Apr", "May", "Jun", "Jul", "Aug", "Sep", "Oct", "Nov", "Dec"];
     const dayName = weekdays[dayOfWeek];
      const monthName = month[today.getMonth()];
      const year = today.getFullYear();
   useEffect(()=>{
-     useAxiosSecure.get('/api/v1/dashboard/hr')
-     .then(res => setDashboardData(res.data))
-     
+    useAxiosSecure.get('/api/v1/dashboard/hr')
+    .then(res => setDashboardData(res.data))
+    console.log('hello world')
   },[])
-    
-  
-
         return (
         <div className='space-y-4'>
        <div className='w-full py-5 px-2 bg-green-300 flex justify-between items-center rounded-md'>
@@ -103,7 +98,7 @@ const HrDashboard = () => {
                </div>
   <div className='p-4 space-y-2'>
     {/* <h2 className='text-3xl text-black'>Admin</h2> */}
-    <div className='flex items-center gap-2'><img src={dashboardData.roles?.admin.image} alt="" className='w-10 h-10 rounded-full' /><h2 className='text-black'>
+    <div className='flex items-center gap-2'><img src={dashboardData.roles?.admin?.image} alt="" className='w-10 h-10 rounded-full' /><h2 className='text-black'>
     {dashboardData.roles?.admin.name}</h2> ({dashboardData.roles?.admin.role})</div>
     {
   dashboardData.roles?.hr.map((item,index)=>{

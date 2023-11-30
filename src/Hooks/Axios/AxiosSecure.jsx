@@ -5,7 +5,8 @@ import UseAuth from "../UserAuth/UseAuth";
 const AxiosSecure = () => {
   const {logout} =UseAuth();
     const instance = axios.create({
-        baseURL:"http://localhost:8000"
+        baseURL:"https://assinment-12-5zllfj1i3-siam-hasans-projects.vercel.app"
+        // https://assinment-12-ilomo4eee-siam-hasans-projects.vercel.app
      })
 console.log(1111)
      instance.interceptors.request.use(function(config){
@@ -18,7 +19,7 @@ console.log(1111)
      instance.interceptors.response.use(function (response){
       return response;
   },async(error)=>{
-    console.log(222)
+    
       console.log('error',error.response.status)
       const status = error.response.status;
    if(status === 401 || status === 403){

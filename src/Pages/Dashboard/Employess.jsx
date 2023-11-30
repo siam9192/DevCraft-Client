@@ -13,6 +13,7 @@ import { FaAddressCard } from "react-icons/fa"
 import { FaTable } from "react-icons/fa";
 import TableView from '../../Components/View/TableView';
 import CardView from '../../Components/View/cardView';
+import { Helmet } from 'react-helmet';
 const Employess = () => {
   const [pages,setPages] = useState ([]);
 const [currentPage,setCurrentPage] = useState(1);
@@ -66,7 +67,7 @@ const handleCurrentPage = (page)=>{
   setCurrentPage(page)
 }
  if(isUsersLoading){
-  return <div className='flex justify-center items-center  min-h-[100vh] w-full'><span class="loading loading-infinity loading-lg text-blue-600 text-center text-9xl"></span></div>
+  return <div className='flex justify-center items-center  py-32 w-full'><span class="loading loading-infinity loading-lg text-blue-600 text-center text-9xl"></span></div>
  }
     return (
     
@@ -76,7 +77,7 @@ const handleCurrentPage = (page)=>{
           </Helmet>
           <Dashboardbar pathName={'Employees'} barText={'Employees'}></Dashboardbar>
          
-         <div className='flex justify-en'>
+         <div className='flex justify-end'>
           <div className='flex items-center gap-3 text-3xl '>
             <div className={`${view === 'table' ? 'text-pink-600' : 'text-white'}`}  onClick={()=>setView('table')}><FaTable></FaTable></div>
             <div className={`${view === 'card' ? 'text-pink-600' : 'text-white'}`} onClick={()=> setView('card')}><FaAddressCard></FaAddressCard></div>

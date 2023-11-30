@@ -31,7 +31,7 @@ const AdminDashboard = () => {
   },[])
     
   
-
+console.log(user)
         return (
         <div className='space-y-4'>
        <div className='w-full py-5 px-2 bg-green-300 flex justify-between items-center rounded-md'>
