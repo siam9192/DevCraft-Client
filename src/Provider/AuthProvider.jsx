@@ -24,23 +24,25 @@ const AuthProvider = ({children}) => {
 const observer = onAuthStateChanged(auth,currentUser =>{
     console.log('way')
     if(currentUser){
-      console.log('tru user')
+      
       AxiosBase().post(`/api/v1/isFired`,{email:currentUser.email})
       .then(res => {
 
-        console.log('fetching')
+    
         if(res.data.isFired){
             logout();
             setLoading(false)
         }
         else{
-            setUser(currentUser)
-            setLoading(false)
-            
             AxiosBase().post('/api/v1/jwt',{email:currentUser.email})
             .then(res => {
              localStorage.setItem('access-token',res.data.token)
+             setUser(currentUser)
+             setLoading(false)
             })
+           
+            
+           
         }
       
       })

@@ -109,7 +109,7 @@ if(result.insertedId){
             <Container>
                 <div className='md:flex flex-col justify-center items-center py-2 space-y-4 font-inter'>
                 <div className='flex flex-col justify-center items-center'>
-        <h1 className='text-blue-600 text-4xl font-oswlad font-semibold'>Innovexa Software</h1>
+        <h1 className='text-blue-600 text-4xl font-oswlad font-semibold'>DevCraftSolutions</h1>
          <p className='text-gray-800 textxl -mt-2 font-inter font-bold'>Employee Management</p>
         </div>
               <Form className='bg-white shadow-2xl p-5 md:w-1/2 space-y-5 rounded-lg text-black' onSubmit={createAccount}>

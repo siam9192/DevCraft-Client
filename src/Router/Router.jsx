@@ -16,6 +16,7 @@ import AdminRoutes from "../Components/AdminRoutes/AdminRoutes";
 import HrRoutes from "../Components/HrRoutes/HrRoutes";
 import EmployeeRoutes from "../Components/EmployeeRoutes/EmployeeRoutes";
 import Contact from "../Pages/Contact/Contact";
+import PrivateRoutes2 from "../Components/PrivateRoutes2/PrivateRoutes2";
 const router = createBrowserRouter([
     {
         path:'/',
@@ -31,11 +32,11 @@ const router = createBrowserRouter([
             },
             {
                 path:'/signup',
-                element:<SignUp></SignUp>
+                element:<PrivateRoutes2><SignUp></SignUp></PrivateRoutes2>
             },
             {
                 path:'/login',
-                element:<Login></Login>
+                element:<PrivateRoutes2><Login></Login></PrivateRoutes2>
             }
         ]
     },

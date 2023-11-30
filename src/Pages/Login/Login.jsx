@@ -27,7 +27,7 @@ const Login = () => {
                   logout();
                   setLoading(false)
                   setError("You can't login because you have fired")
-                  return
+                  return;
 
               }
               if(state){
@@ -57,7 +57,7 @@ const Login = () => {
         <Container>
             <div className='md:flex flex-col justify-center items-center py-20 space-y-4 font-inter md:px-0 px-2'>
             <div className='flex flex-col justify-center items-center'>
-    <h1 className='text-blue-600 md:text-4xl text-3xl font-oswlad font-semibold'>Innovexa Software</h1>
+    <h1 className='text-blue-600 md:text-4xl text-3xl font-oswlad font-semibold'>DevCraft Solutions</h1>
      <p className='text-gray-800 textxl -mt-2 font-inter font-bold'>Employee Management</p>
     </div>
           <form className='bg-white shadow-2xl p-5 md:w-1/3 space-y-5 rounded-lg px-4 text-black' onSubmit={handleLogin}>
