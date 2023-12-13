@@ -17,6 +17,9 @@ import HrRoutes from "../Components/HrRoutes/HrRoutes";
 import EmployeeRoutes from "../Components/EmployeeRoutes/EmployeeRoutes";
 import Contact from "../Pages/Contact/Contact";
 import PrivateRoutes2 from "../Components/PrivateRoutes2/PrivateRoutes2";
+import Leaves from "../Pages/Dashboard/Leaves";
+import LeaveRequest from "../Pages/Dashboard/DashboardRoutes/LeaveRequest";
+import Profile from "../Pages/Dashboard/DashboardRoutes/Profile";
 const router = createBrowserRouter([
     {
         path:'/',
@@ -68,6 +71,18 @@ const router = createBrowserRouter([
             {
                 path:'/dashboard/work-sheet',
                 element:<PrivateRoutes><EmployeeRoutes><WorkSheet></WorkSheet></EmployeeRoutes></PrivateRoutes>
+            },
+            {
+                path:'/dashboard/leave',
+                element:<Leaves></Leaves>
+            },
+            {
+                path:'/dashboard/leave-requests',
+                element:<LeaveRequest></LeaveRequest>
+            },
+            {
+                path:'/dashboard/profile',
+                element:<Profile></Profile>
             }
         ],
 

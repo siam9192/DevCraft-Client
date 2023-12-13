@@ -27,6 +27,20 @@ const Employee = () => {
         className= {`${pathname == '/dashboard/work-sheet' ? 'text-blue-600': ''} py-2 w-full`}
       >
         <div className="flex items-center gap-2"><div className='px-2 py-1 bg-[#a2d2ff] rounded'><GrWorkshop></GrWorkshop></div><p>Work sheets</p></div>
+        
+      </NavLink>
+      <NavLink
+        to="/dashboard/leave"
+        className= {`${pathname == '/dashboard/leave' ? 'text-blue-600': ''} py-2 w-full`}
+      >
+        <div className="flex items-center gap-2"><div className='px-2 py-1 bg-[#a2d2ff] rounded'><GrWorkshop></GrWorkshop></div><p>Leave</p></div>
+        
+      </NavLink>
+      <NavLink
+        to="/dashboard/profile"
+        className= {`${pathname == '/dashboard/profile' ? 'text-blue-600': ''} py-2 w-full`}
+      > <div className="flex items-center gap-2"><div className='px-2 py-1 bg-[#a2d2ff] rounded'><GiProgression></GiProgression></div><p>Profile</p></div>
+      
       </NavLink>
       </div>
         </>

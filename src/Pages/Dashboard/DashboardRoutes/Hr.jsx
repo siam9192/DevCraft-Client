@@ -6,6 +6,8 @@ import { MdPayment } from "react-icons/md";
 import { GrHistory } from "react-icons/gr";
 import { GrWorkshop } from "react-icons/gr";
 import { NavLink, useLocation } from 'react-router-dom';
+import { RxExit } from 'react-icons/rx';
+import { ImProfile } from "react-icons/im";
 const Hr = () => {
   const {pathname} = useLocation();
     return (
@@ -25,6 +27,19 @@ const Hr = () => {
         to="/dashboard/progress"
         className= {`${pathname == '/dashboard/progress' ? 'text-blue-600': ''} py-2 w-full`}
       > <div className="flex items-center gap-2"><div className='px-2 py-1 bg-[#a2d2ff] rounded'><GiProgression></GiProgression></div><p>Progress</p></div>
+
+      </NavLink>
+      <NavLink
+        to="/dashboard/leave-requests"
+        className= {`${pathname == '/dashboard/leave-requests' ? 'text-blue-600': ''} py-2 w-full`}
+      > <div className="flex items-center gap-2"><div className='px-2 py-1 bg-[#a2d2ff] rounded'><RxExit></RxExit></div><p>Leave requests</p></div>
+      
+      </NavLink>
+      <NavLink
+        to="/dashboard/profile"
+        className= {`${pathname == '/dashboard/profile' ? 'text-blue-600': ''} py-2 w-full`}
+      > <div className="flex items-center gap-2"><div className='px-2 py-1 bg-[#a2d2ff] rounded'><ImProfile></ImProfile></div><p>Update Profile</p></div>
+      
       </NavLink>
       </div>
         </>
